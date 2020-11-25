@@ -1,0 +1,138 @@
+
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+  margin: 0;
+}
+
+html, body {
+  // 基础字体大小
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Hiragino Sans GB",
+  "Microsoft YaHei", "微软雅黑", Arial, sans-serif;;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+img,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+td:not([align]),
+th:not([align]) {
+  text-align: left;
+}
+
+// 全局类名
+.min-width {
+  min-width: 1024px;
+}
+
+.content-area {
+  max-width: 1440px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.sub-title {
+  font-size: 12px;
+  color: #999;
+  line-height: 17px;
+}
+
+.desc {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #888;
+  text-align: left;
+  line-height: 24px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 12px;
+  border: 1px solid #d7d8d9;
+  border-radius: 2px;
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+    border-color: #ff6a00;
+    background-color: #ff6a00;
+  }
+}
+
+.center-align {
+  text-align: center;
+}
+
+// animation area
+
