@@ -12,62 +12,68 @@
               backgroundPosition: 'top center',
             }"
           >
-            <p class="inner-title" :class="{show: hasReady}">值得信赖的选择</p>
-            <p class="inner-desc" :class="{show: hasReady}">A TRUSTWORTHY CHOICE</p>
+            <template>
+              <p class="inner-title" :class="{ show: hasReady }">
+                {{ item.cdes }}
+              </p>
+              <p class="inner-desc" :class="{ show: hasReady }">
+                {{ item.edes }}
+              </p>
+            </template>
           </div>
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
     </div>
-    <div class="company-part animate-ele" animate="slide-left">
-      <div class="image-part ani-flashShine">
-        <img :src="companyImage" alt />
+    <div class="content-area">
+      <div class="company-part animate-ele">
+        <div class="image-part ani-flashShine">
+          <img :src="companyImage" alt />
+        </div>
+        <div class="desc-part">
+          <p class="title">公司简介</p>
+          <p class="sub-title">COMPANY PROFILE</p>
+          <p class="desc">
+            张北欧科网络科技有限公司最早成立于2011年，公司一店座落于张北顺达东苑小区南底商18号，2014正式更名为张北欧科商贸有限公司，并于2017年开设二店，二店座落于张北县民政局大门南侧...
+          </p>
+          <div class="btn" @click="_handleViewAbout">Read more --</div>
+        </div>
       </div>
-      <div class="desc-part">
-        <p class="title">公司简介</p>
-        <p class="sub-title">COMPANY PROFILE</p>
-        <p class="desc">
-          欧科商贸有限公司创始于2010年，是一家多元化生态发展的集品牌电脑、组装电脑销售以及维修，监控设备批发安装的公司。公司十年期间服务了个人散户以及公司等不同类型的客户，累计了不同方面的服务经验
-          ...
-        </p>
-        <div class="btn" @click="_handleViewAbout">Read more --</div>
+      <div class="plate-section buiness-range animate-ele" animate="fade">
+        <p class="title">经营品类概览</p>
+        <ul class="product-list">
+          <li v-for="(item, index) in productList" :key="index">
+            <div
+              class="image-wrapper"
+              :style="{
+                backgroundImage: `url(${item.src})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                backgroundPosition: 'top center',
+              }"
+            >
+            </div>
+            <div class="words-part">
+              <p class="product-title">{{ item.title }}</p>
+              <p class="product-desc">{{ item.desc }}</p>
+            </div>
+          </li>
+        </ul>
       </div>
-    </div>
-    <div class="plate-section buiness-range animate-ele" animate="fade">
-      <p class="title">经营品类概览</p>
-      <ul class="product-list">
-        <li v-for="(item, index) in productList" :key="index">
-          <div
-            class="image-wrapper"
-            :style="{
-              backgroundImage: `url(${item.src})`,
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: 'cover',
-              backgroundPosition: 'top center',
-            }"
+      <div class="plate-section service-area animate-ele">
+        <p class="title">经营理念</p>
+        <ul class="service-list">
+          <li
+            class="list-item"
+            v-for="(item, index) in serviceList"
+            :key="index"
+            :style="{ backgroundColor: item.color }"
           >
-            <!-- <img :src="item.src" alt /> -->
-          </div>
-          <div class="words-part">
-            <p class="product-title">{{ item.title }}</p>
-            <p class="product-desc">{{ item.desc }}</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="plate-section service-area animate-ele">
-      <p class="title">经营理念</p>
-      <ul class="service-list">
-        <li
-          class="list-item"
-          v-for="(item, index) in serviceList"
-          :key="index"
-          :style="{ backgroundColor: item.color }"
-        >
-          <p class="tit">{{ item.title }}</p>
-          <p class="des">{{ item.desc }}</p>
-        </li>
-      </ul>
+            <p class="tit">{{ item.title }}</p>
+            <p class="des">{{ item.desc }}</p>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -76,77 +82,77 @@ export default {
   data() {
     return {
       carouselList: [
-        { src: require("@s/images/home/banner1.png"), title: "电脑/监控" },
-        { src: require("@s/images/home/banner2.png"), title: "电脑/监控" },
+        { src: require('@s/images/home/banner1.png'), title: '电脑/监控', cdes: '尽心尽力的服务', edes: 'THE DEDICATED SERVICE' },
+        { src: require('@s/images/home/banner2.png'), title: '电脑/监控', cdes: '值得信赖的选择', edes: 'A TRUSTWORTHY CHOICE' },
       ],
       productList: [
         {
-          title: "笔记本",
-          desc: "各品牌笔记本电脑",
-          src: require("@s/images/home/mac.png"),
+          title: '笔记本',
+          desc: '各品牌笔记本电脑',
+          src: require('@s/images/home/mac.png'),
         },
         {
-          title: "台式机",
-          desc: "各品牌台式电脑",
-          src: require("@s/images/home/taishi.png"),
+          title: '台式机',
+          desc: '各品牌台式电脑',
+          src: require('@s/images/home/pc.png'),
         },
         {
-          title: "iPad",
-          desc: "各品牌平板电脑",
-          src: require("@s/images/home/ipad.png"),
+          title: 'iPad',
+          desc: '各品牌平板电脑',
+          src: require('@s/images/home/ipad.png'),
         },
         {
-          title: "监控设备",
-          desc: "高清数字监控设备",
-          src: require("@s/images/home/mac.png"),
+          title: '监控设备',
+          desc: '高清数字监控设备',
+          src: require('@s/images/home/monitoring.png'),
         },
         {
-          title: "充电器",
-          desc: "电脑配件",
-          src: require("@s/images/home/pc_charger.png"),
+          title: '充电器',
+          desc: '电脑配件',
+          src: require('@s/images/home/pc_charger.png'),
         },
         {
-          title: "显卡",
-          desc: "电脑配件",
-          src: require("@s/images/home/graphics_card.png"),
+          title: '显卡',
+          desc: '电脑配件',
+          src: require('@s/images/home/graphics_card.png'),
         },
         {
-          title: "电源",
-          desc: "电脑配件",
-          src: require("@s/images/home/power.png"),
+          title: '电源',
+          desc: '电脑配件',
+          src: require('@s/images/home/power.png'),
         },
         {
-          title: "手机配件",
-          desc: "各品牌手机数据线",
-          src: require("@s/images/home/cable.png"),
+          title: '手机配件',
+          desc: '各品牌手机数据线',
+          src: require('@s/images/home/cable.png'),
         },
       ],
       serviceList: [
         {
-          title: "十年的沉淀",
-          desc: "历经十年风雨，留下了真诚",
-          color: "#409EFF",
+          title: '时间的沉淀',
+          desc: '历经时间风雨，留下了真诚',
+          color: '#409EFF',
         },
-        { title: "靠谱的品质", desc: "优质货源，精致商品", color: "#E6A23C" },
+        { title: '靠谱的品质', desc: '优质货源，精致商品', color: '#E6A23C' },
         {
-          title: "诱人的性价比",
-          desc: "不选最贵，只选最适合",
-          color: "#F56C6C",
+          title: '诱人的性价比',
+          desc: '不选最贵，只选最适合',
+          color: '#F56C6C',
         },
         {
-          title: "优质的服务",
-          desc: "尽最大努力，给每一位用户最优质的服务",
-          color: "#67C23A",
+          title: '优质的服务',
+          desc: '尽最大努力，给每一位用户最优质的服务',
+          color: '#67C23A',
         },
       ],
-      companyImage: require("@s/images/home/company.png"),
+      companyImage: require('@s/images/home/company.png'),
       swiperOptions: {
         pagination: {
-          el: ".swiper-pagination",
+          el: '.swiper-pagination',
         },
       },
-      hasReady: false
-    };
+      hasReady: false,
+    }
   },
   mounted() {
     this.$nextTick(() => {
@@ -155,10 +161,10 @@ export default {
   },
   methods: {
     _handleViewAbout() {
-      this.$router.push("/about");
+      this.$router.push('/about')
     },
   },
-};
+}
 </script>
 <style lang="scss" scoped>
 .oksm-home--page {
@@ -251,7 +257,7 @@ export default {
         left: -75%;
         z-index: 2;
         display: block;
-        content: "";
+        content: '';
         width: 50%;
         height: 100%;
         background: -webkit-linear-gradient(
@@ -312,7 +318,7 @@ export default {
         .image-wrapper {
           position: relative;
           width: 100%;
-          height: 18vw;
+          height: 13vw;
           min-height: 155px;
           overflow: hidden;
 

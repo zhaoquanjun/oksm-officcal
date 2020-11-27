@@ -24,7 +24,9 @@ export default {
       navs: [
         { chinese: "首页", english: "HOME", value: 1, path: "/" },
         { chinese: "关于我们", english: "ABOUT", value: 2, path: "/about" },
-        { chinese: "联系我们", english: "CONTRACT", value: 3, path: "contact" },
+        { chinese: "联系我们", english: "contact", value: 3, path: "contact" },
+        { chinese: "联系我们", english: "contact", value: 3, path: "contact" },
+        { chinese: "联系我们", english: "contact", value: 3, path: "contact" },
       ],
       logo: require("@s/images/home/logo.png"),
       hasScrollOverCarousel: false,
@@ -110,6 +112,6 @@ export default {
 }
 
 .bg {
-  background-color: rgba(0, 0, 0, .7);
+  background-color: rgba(0, 0, 0, .3);
 }
 </style>

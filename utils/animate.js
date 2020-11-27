@@ -22,7 +22,8 @@ const animate = {
     const wh = document.documentElement.clientHeight;
     Array.prototype.forEach.call(arr, (ele) => {
       const animateType = ele.getAttribute("animate");
-      if (ele.offsetTop + wh - scrollTop > 0) {
+      const eleH = ele.clientHeight
+      if (ele.offsetTop - wh - scrollTop > 50 || scrollTop - ele.offsetTop - eleH > 50) {
 
         switch (animateType) {
           case "slide-left":

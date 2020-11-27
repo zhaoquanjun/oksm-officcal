@@ -1,8 +1,8 @@
 <template>
   <div class="oksm-footer--section">
-    <p class="desc-item">欧科商贸有限公司</p>
+    <p class="desc-item">欧科网络科技有限公司</p>
     <p class="desc-item"></p>
-    <p class="desc-item">版权所有 欧科商贸有限公司 © Copyright 2020 - 2030.欧科商贸 All Rights Reserved</p>
+    <p class="desc-item">版权所有 欧科网络科技有限公司 © Copyright 2020 - 2030.欧科网络 All Rights Reserved</p>
   </div>
 </template>
 

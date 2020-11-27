@@ -15,9 +15,6 @@ Vue.use(BaiduMap, {
   ak: 'K0uZ8eoO00houxVX2itxWAwHGu4NBGQo'
 })
 
-import animate from '@u/animate'
-animate.init()
-
 Vue.config.productionTip = false;
 
 new Vue({
