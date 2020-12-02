@@ -25,8 +25,6 @@ export default {
         { chinese: "首页", english: "HOME", value: 1, path: "/" },
         { chinese: "关于我们", english: "ABOUT", value: 2, path: "/about" },
         { chinese: "联系我们", english: "contact", value: 3, path: "contact" },
-        { chinese: "联系我们", english: "contact", value: 3, path: "contact" },
-        { chinese: "联系我们", english: "contact", value: 3, path: "contact" },
       ],
       logo: require("@s/images/home/logo.png"),
       hasScrollOverCarousel: false,
@@ -77,7 +75,7 @@ export default {
   align-items: center;
   z-index: 99;
   border-bottom: 1px solid rgba(255,255,255,.15);
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, .3);
 
   .logo {
     font-size: 32px;
@@ -101,7 +99,7 @@ export default {
       height: 100px;
       line-height: 100px;
       cursor: pointer;
-      color: #fff;
+      color: #FFF;
       font-size: 16px;
 
       &:hover {
@@ -112,6 +110,6 @@ export default {
 }
 
 .bg {
-  background-color: rgba(0, 0, 0, .3);
+  background-color: rgba(102, 102, 102, 0.67);
 }
 </style>

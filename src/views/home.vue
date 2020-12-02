@@ -1,7 +1,7 @@
 <template>
   <div class="oksm-home--page min-width">
     <div class="caousel-area" id="carousel">
-      <swiper ref="mySwiper" :options="swiperOptions">
+      <swiper ref="mySwiper" :options="swiperOption">
         <swiper-slide v-for="(item, index) in carouselList" :key="index">
           <div
             class="carousel-inner"
@@ -13,24 +13,26 @@
             }"
           >
             <template>
-              <p class="inner-title" :class="{ show: hasReady }">
+              <p class="inner-title ale" data-animate="s-t">
                 {{ item.cdes }}
               </p>
-              <p class="inner-desc" :class="{ show: hasReady }">
+              <p class="inner-desc ale" data-animate="s-b">
                 {{ item.edes }}
               </p>
             </template>
           </div>
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
+        <div class="swiper-button-prev" slot="button-prev"></div>
+        <div class="swiper-button-next" slot="button-next"></div>
       </swiper>
     </div>
     <div class="content-area">
       <div class="company-part animate-ele">
-        <div class="image-part ani-flashShine">
+        <div class="image-part ani-flashShine ale" data-animate="s-l">
           <img :src="companyImage" alt />
         </div>
-        <div class="desc-part">
+        <div class="desc-part ale" data-animate="s-r">
           <p class="title">公司简介</p>
           <p class="sub-title">COMPANY PROFILE</p>
           <p class="desc">
@@ -41,7 +43,7 @@
       </div>
       <div class="plate-section buiness-range animate-ele" animate="fade">
         <p class="title">经营品类概览</p>
-        <ul class="product-list">
+        <ul class="product-list ale" data-animate="list">
           <li v-for="(item, index) in productList" :key="index">
             <div
               class="image-wrapper"
@@ -51,8 +53,7 @@
                 backgroundSize: 'cover',
                 backgroundPosition: 'top center',
               }"
-            >
-            </div>
+            ></div>
             <div class="words-part">
               <p class="product-title">{{ item.title }}</p>
               <p class="product-desc">{{ item.desc }}</p>
@@ -81,9 +82,45 @@
 export default {
   data() {
     return {
+      swiperOption: {
+        autoplay: {
+          delay: 1000,
+          disableOnInteraction: false, // 手动切换之后继续自动轮播
+        },
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true, // 允许点击小圆点跳转
+        }
+      },
       carouselList: [
-        { src: require('@s/images/home/banner1.png'), title: '电脑/监控', cdes: '尽心尽力的服务', edes: 'THE DEDICATED SERVICE' },
-        { src: require('@s/images/home/banner2.png'), title: '电脑/监控', cdes: '值得信赖的选择', edes: 'A TRUSTWORTHY CHOICE' },
+        {
+          src: require('@s/images/home/banner1.png'),
+          title: '电脑/监控',
+          cdes: '尽心尽力的服务',
+          edes: 'THE DEDICATED SERVICE',
+        },
+        {
+          src: require('@s/images/home/banner2.png'),
+          title: '电脑/监控',
+          cdes: '优秀靠谱的品质',
+          edes: 'THE EXCELLENT QUALITY',
+        },
+        {
+          src: require('@s/images/home/banner3.png'),
+          title: '电脑/监控',
+          cdes: '高价值的解决方案',
+          edes: 'THE HIGH-VALUE SOLUTIONS',
+        },{
+          src: require('@s/images/home/banner4.png'),
+          title: '电脑/监控',
+          cdes: '值得信赖的选择',
+          edes: 'A TRUSTWORTHY CHOICE',
+        },
       ],
       productList: [
         {
@@ -145,19 +182,8 @@ export default {
           color: '#67C23A',
         },
       ],
-      companyImage: require('@s/images/home/company.png'),
-      swiperOptions: {
-        pagination: {
-          el: '.swiper-pagination',
-        },
-      },
-      hasReady: false,
+      companyImage: require('@s/images/home/company.png')
     }
-  },
-  mounted() {
-    this.$nextTick(() => {
-      this.hasReady = true
-    })
   },
   methods: {
     _handleViewAbout() {
@@ -318,7 +344,7 @@ export default {
         .image-wrapper {
           position: relative;
           width: 100%;
-          height: 13vw;
+          height: 14vw;
           min-height: 155px;
           overflow: hidden;
 
@@ -352,8 +378,8 @@ export default {
         }
 
         &:hover {
-          transform: translate3d(0, -2px, 0);
-          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+          transform: translate3d(0, -2px, 0) !important;
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
         }
       }
 

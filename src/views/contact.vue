@@ -12,10 +12,10 @@
       <div class="contact-ways">
         <p class="title">欧科网络科技有限公司</p>
         <p class="desc">欧科网络科技有限公司是集电脑销售、监控安防、电信服务、网络安装、软硬件维修、数据处理的一体化公司...</p>
-        <p class="pad-t">线下地址：河北省张家口市张北县民政局南侧欧科网络科技有限公司</p>
-        <p>QQ：113128998 | 155313275；</p>
-        <p>电话：13373133883；</p>
-        <p>邮箱：113128998@qq.com；</p>
+        <p class="pad-t">地址：河北省张家口市张北县民政局南侧欧科网络科技有限公司</p>
+        <p>QQ：113128998 | 155313275</p>
+        <p>电话：13373133883</p>
+        <p>邮箱：113128998@qq.com</p>
       </div>
       <div class="address-map" id="map"></div>
     </div>
@@ -154,7 +154,7 @@ export default {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    padding: 16px 0 48px;
+    padding: 48px 0;
 
     .contact-ways {
       padding-right: 80px;

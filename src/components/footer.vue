@@ -9,9 +9,7 @@
 <script>
 export default {
   data() {
-    return {
-      qrcode: require("@s/images/qrcode.png"),
-    };
+    return {};
   },
 };
 </script>

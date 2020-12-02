@@ -1,0 +1,14 @@
+.swiper-container {
+  .swiper-button-prev,
+  .swiper-button-next {
+    &::after {
+      color: #fff;
+    }
+  }
+
+  .swiper-pagination {
+    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+      background-color: #fff;
+    }
+  }
+}

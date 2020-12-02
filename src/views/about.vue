@@ -13,6 +13,8 @@
             }"
           ></div>
         </swiper-slide>
+        <div class="swiper-button-prev" slot="button-prev"></div>
+        <div class="swiper-button-next" slot="button-next"></div>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
     </div>
@@ -107,7 +109,7 @@ export default {
   data() {
     return {
       logo: require('@s/images/home/logo2.png'),
-      code: require('@s/images/qrcode.png'),
+      code: require('@s/images/about/qrcode.png'),
       carouselList: [
         { src: require('@s/images/about/banner3.png'), title: '电脑/监控' },
         { src: require('@s/images/about/banner1.png'), title: '电脑/监控' },
@@ -124,6 +126,16 @@ export default {
       swiperOptions: {
         pagination: {
           el: '.swiper-pagination',
+          clickable: true, // 允许点击小圆点跳转
+        },
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: true, // 手动切换之后继续自动轮播
+        },
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         },
       },
     }
