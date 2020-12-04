@@ -1,0 +1,11 @@
+.ale {
+  opacity: 0;
+}
+
+.ale[data-animate='list'] {
+  opacity: 1;
+
+  .list-item {
+    opacity: 0;
+  }
+}

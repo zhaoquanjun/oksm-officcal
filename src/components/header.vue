@@ -1,12 +1,13 @@
 <template>
   <div
     class="oksm-header--section"
-    :class="{ 'bg': hasScrollOverCarousel || !isTransparent }"
+    :class="{ 'bg': hasScrollOverCarousel }"
   >
     <div class="logo">欧科 <span>OK</span></div>
     <ul class="nav-wrapper">
       <li
         class="nav-item"
+        :class="{'active': currentPath == item.path}"
         v-for="(item, index) in navs"
         :key="index"
         @click="_handleSkipOtherPage(item)"
@@ -24,7 +25,8 @@ export default {
       navs: [
         { chinese: "首页", english: "HOME", value: 1, path: "/" },
         { chinese: "关于我们", english: "ABOUT", value: 2, path: "/about" },
-        { chinese: "联系我们", english: "contact", value: 3, path: "contact" },
+        { chinese: "联系我们", english: "contact", value: 3, path: "/contact" },
+        { chinese: "解决方案", english: "solution", value: 3, path: "/solution" },
       ],
       logo: require("@s/images/home/logo.png"),
       hasScrollOverCarousel: false,
@@ -34,8 +36,8 @@ export default {
     this.addDocumentEvent();
   },
   computed: {
-    isTransparent() {
-      return this.$route.path == '/home' || this.$route.path == '/' || this.$route.path == '/about'
+    currentPath() {
+      return this.$route.path
     }
   },
   methods: {
@@ -58,7 +60,7 @@ export default {
         }
       });
     },
-  },
+  }
 };
 </script>
 
@@ -67,7 +69,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  padding: 0 24px;
+  padding: 0 48px;
   width: 100%;
   min-width: 1024px;
   display: flex;
@@ -106,10 +108,14 @@ export default {
         color: #ff6a00;
       }
     }
+
+    .active {
+      color: #ff6a00;
+    }
   }
 }
 
 .bg {
-  background-color: rgba(102, 102, 102, 0.67);
+  background-color: rgba(102, 102, 102, 0.5);
 }
 </style>

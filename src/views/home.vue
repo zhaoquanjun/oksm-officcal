@@ -1,6 +1,6 @@
 <template>
   <div class="oksm-home--page min-width">
-    <div class="caousel-area" id="carousel">
+    <div class="caousel-part" id="carousel">
       <swiper ref="mySwiper" :options="swiperOption">
         <swiper-slide v-for="(item, index) in carouselList" :key="index">
           <div
@@ -27,24 +27,29 @@
         <div class="swiper-button-next" slot="button-next"></div>
       </swiper>
     </div>
-    <div class="content-area">
-      <div class="company-part animate-ele">
-        <div class="image-part ani-flashShine ale" data-animate="s-l">
-          <img :src="companyImage" alt />
-        </div>
-        <div class="desc-part ale" data-animate="s-r">
-          <p class="title">公司简介</p>
-          <p class="sub-title">COMPANY PROFILE</p>
-          <p class="desc">
-            张北欧科网络科技有限公司最早成立于2011年，公司一店座落于张北顺达东苑小区南底商18号，2014正式更名为张北欧科商贸有限公司，并于2017年开设二店，二店座落于张北县民政局大门南侧...
-          </p>
-          <div class="btn" @click="_handleViewAbout">Read more --</div>
-        </div>
+    <div class="company-part content-area">
+      <div class="image-part ani-flashShine ale" data-animate="s-l">
+        <img :src="companyImage" alt />
       </div>
-      <div class="plate-section buiness-range animate-ele" animate="fade">
-        <p class="title">经营品类概览</p>
+      <div class="desc-part ale" data-animate="s-r">
+        <p class="title">公司简介</p>
+        <p class="sub-title">COMPANY PROFILE</p>
+        <p class="desc">
+          张北欧科网络科技有限公司最早成立于2011年，公司一店座落于张北顺达东苑小区南底商18号，2014正式更名为张北欧科商贸有限公司，并于2017年开设二店，二店座落于张北县民政局大门南侧...
+        </p>
+        <div class="btn" @click="_handleViewAbout">Read more --</div>
+      </div>
+    </div>
+    <div class="full-screen">
+      <div class="plate-section goods-part content-area">
+        <p class="title">数码类概览</p>
+        <p class="desc">公司经营各种电脑、数码、监控等设备</p>
         <ul class="product-list ale" data-animate="list">
-          <li v-for="(item, index) in productList" :key="index">
+          <li
+            class="list-item"
+            v-for="(item, index) in productList"
+            :key="index"
+          >
             <div
               class="image-wrapper"
               :style="{
@@ -61,8 +66,51 @@
           </li>
         </ul>
       </div>
-      <div class="plate-section service-area animate-ele">
+    </div>
+    <div class="resolve-part plate-section content-area">
+      <p class="title">解决方案 <span class="read-more" @click="_handleViewSolution">READ MORE --</span></p>
+      <p class="sub-title">
+        立足于每一位客户需求点，规范的流程，最短时间产出最优方案
+      </p>
+      <ul class="plan-wrapper prev">
+        <li v-for="(item, index) in plans.prev" :key="index">
+          <div class="plan-item" v-if="item.desc">
+            <i class="iconfont" :class="item.icon"></i>
+            <p class="desc">{{ item.desc }}</p>
+          </div>
+          <i
+            v-else
+            class="iconfont arrow"
+            :class="item.arrow"
+            :style="{ transform: 'rotate(' + item.deg + 'deg)' }"
+          ></i>
+        </li>
+        <li class="bridge">
+          <i
+            class="iconfont arrow icon-jiantou1"
+            :style="{ transform: 'rotate(' + 80 + 'deg)' }"
+          ></i>
+        </li>
+      </ul>
+      <ul class="plan-wrapper next">
+        <li v-for="(item, index) in plans.next" :key="index">
+          <div class="plan-item" v-if="item.desc">
+            <i class="iconfont" :class="item.icon"></i>
+            <p class="desc">{{ item.desc }}</p>
+          </div>
+          <i
+            v-else
+            class="iconfont arrow"
+            :class="item.arrow"
+            :style="{ transform: 'rotate(' + item.deg + 'deg)' }"
+          ></i>
+        </li>
+      </ul>
+    </div>
+    <div class="full-screen">
+      <div class="service-area content-area">
         <p class="title">经营理念</p>
+        <p class="desc">客户至上的理念，是一贯的坚持</p>
         <ul class="service-list">
           <li
             class="list-item"
@@ -95,28 +143,29 @@ export default {
         pagination: {
           el: '.swiper-pagination',
           clickable: true, // 允许点击小圆点跳转
-        }
+        },
       },
       carouselList: [
         {
-          src: require('@s/images/home/banner1.png'),
+          src: require('@s/images/home/home1.png'),
           title: '电脑/监控',
           cdes: '尽心尽力的服务',
           edes: 'THE DEDICATED SERVICE',
         },
         {
-          src: require('@s/images/home/banner2.png'),
+          src: require('@s/images/home/home2.png'),
           title: '电脑/监控',
           cdes: '优秀靠谱的品质',
           edes: 'THE EXCELLENT QUALITY',
         },
         {
-          src: require('@s/images/home/banner3.png'),
+          src: require('@s/images/home/home3.png'),
           title: '电脑/监控',
           cdes: '高价值的解决方案',
           edes: 'THE HIGH-VALUE SOLUTIONS',
-        },{
-          src: require('@s/images/home/banner4.png'),
+        },
+        {
+          src: require('@s/images/home/home4.png'),
           title: '电脑/监控',
           cdes: '值得信赖的选择',
           edes: 'A TRUSTWORTHY CHOICE',
@@ -164,6 +213,45 @@ export default {
           src: require('@s/images/home/cable.png'),
         },
       ],
+      plans: {
+        prev: [
+          {
+            icon: 'icon-ziyuan',
+            desc: '需求对接',
+          },
+          { arrow: 'icon-jiantou1', deg: 0 },
+          {
+            icon: 'icon-fenxi',
+            desc: '需求分析',
+          },
+          { arrow: 'icon-jiantou1', deg: 0 },
+          {
+            icon: 'icon-fangan3',
+            desc: '制定方案',
+          },
+        ],
+        next: [
+          {
+            icon: 'icon-weihu1',
+            desc: '后期维护',
+          },
+          { arrow: 'icon-jiantou1', deg: 180 },
+          {
+            icon: 'icon-yanshou3',
+            desc: '交付验收',
+          },
+          { arrow: 'icon-jiantou1', deg: 180 },
+          {
+            icon: 'icon-shishi',
+            desc: '工程实施',
+          },
+          { arrow: 'icon-jiantou1', deg: 180 },
+          {
+            icon: 'icon-jiaofu1',
+            desc: '方案交付',
+          },
+        ],
+      },
       serviceList: [
         {
           title: '时间的沉淀',
@@ -182,18 +270,27 @@ export default {
           color: '#67C23A',
         },
       ],
-      companyImage: require('@s/images/home/company.png')
+      companyImage: require('@s/images/home/company.png'),
     }
   },
   methods: {
     _handleViewAbout() {
       this.$router.push('/about')
     },
+    _handleViewSolution() {
+      this.$router.push('/solution')
+    }
   },
 }
 </script>
 <style lang="scss" scoped>
 .oksm-home--page {
+  .full-screen {
+    width: 100%;
+    background-color: #f5f5f5;
+    overflow: hidden;
+  }
+
   .plate-section {
     padding: 48px 24px;
 
@@ -204,7 +301,7 @@ export default {
     }
   }
 
-  .caousel-area {
+  .caousel-part {
     width: 100%;
 
     .swiper-wrapper {
@@ -222,7 +319,7 @@ export default {
           .inner-title {
             font-size: 6vw;
             font-weight: bold;
-            color: #fff;
+            color: #ff6a00;
             text-align: center;
             width: 100%;
             opacity: 0;
@@ -233,7 +330,7 @@ export default {
           .inner-desc {
             font-size: 4vw;
             font-weight: bold;
-            color: #fff;
+            color: #ff6a00;
             text-align: center;
             width: 100%;
             opacity: 0;
@@ -316,12 +413,17 @@ export default {
     }
   }
 
-  .buiness-range {
+  .goods-part {
     padding: 48px 24px;
-    background-color: #f5f5f5;
 
     .title {
       text-align: center;
+      font-weight: bold;
+    }
+
+    .desc {
+      text-align: center;
+      color: #999;
     }
 
     .product-list {
@@ -329,7 +431,7 @@ export default {
       justify-content: center;
       align-items: flex-start;
       flex-wrap: wrap;
-      margin-top: 32px;
+      margin-top: 48px;
 
       li {
         margin-left: 2%;
@@ -393,19 +495,128 @@ export default {
     }
   }
 
-  .service-area {
+  .resolve-part {
     .title {
+      text-align: center;
+      font-weight: bold;
+
+      .read-more {
+        padding-left: 16px;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 28px;
+
+        &:hover {
+          color: #ff6a00;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .sub-title {
+      padding-top: 16px;
+      font-size: 14px;
+      color: #999;
       text-align: center;
     }
 
+    .plan-wrapper {
+      position: relative;
+      margin: 48px auto 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 960px;
+
+      li {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        transition: all 0.25s ease-in-out;
+
+        .plan-item {
+          i {
+            display: block;
+            padding: 32px;
+            font-size: 40px;
+            color: #666;
+            border: 1px solid #d7d8d9;
+            border-radius: 50%;
+          }
+
+          p.desc {
+            font-size: 16px;
+            text-align: center;
+          }
+        }
+
+        i.arrow {
+          margin-top: -20px;
+          display: block;
+          transform-origin: center;
+          font-size: 32px;
+          color: #999;
+        }
+
+        &:hover {
+          cursor: pointer;
+          transform: translate3d(0, -3px, 0);
+
+          .plan-item {
+            i {
+              border-color: #ff6a00;
+            }
+          }
+
+          .desc {
+            color: #ff6a00;
+          }
+
+          i {
+            color: #ff6a00;
+          }
+        }
+      }
+
+      .bridge {
+        position: absolute;
+        right: 85px;
+        top: 135%;
+      }
+    }
+
+    .next {
+      margin-top: 100px;
+    }
+  }
+
+  .service-area {
+    padding: 48px 24px 60px;
+
+    .title {
+      font-weight: bold;
+      font-size: 20px;
+      text-align: center;
+      color: #666;
+    }
+
+    .desc {
+      text-align: center;
+      color: #999;
+    }
+
     .service-list {
-      margin-top: 32px;
+      margin-top: 48px;
       display: flex;
       justify-content: space-around;
       align-items: flex-start;
       flex-wrap: wrap;
 
       .list-item {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
         margin-bottom: 16px;
         padding: 60px 24px;
         border-radius: 12px;

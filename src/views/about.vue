@@ -22,11 +22,11 @@
       <div class="logo-area">
         <img :src="logo" alt="" />
       </div>
-      <p class="produce-words">
+      <p class="produce-words ale" data-animate="s-l">
         张北欧科网络科技有限公司最早成立于2011年，公司一店座落于张北顺达东苑小区南底商18号，2014正式更名为张北欧科商贸有限公司，并于2017年开设二店，二店座落于张北县民政局大门南侧。随着规模的不断扩大与业务种类的增多，于2020年3月20日正式更名为张北欧科网络科技有限公司，公司是集电脑销售、监控安防、电信服务、网络安装、软硬件维修、数据处理的一体化公司。经过将近10年的努力与发展，已具一定的规模与实力。
         在为用户创造更多价值的同时，张北欧科商贸有限公司更是致力于为不同群体的用户提供更高的应用需求。极力的推动新产品普及及公司的发展步伐。在品牌的规划及产品导入中，张北欧科网络科技有限公司不断的注入新的元素。通过不断努力与积累，我公司正逐步向全方位发展专业化IT公司努力。
       </p>
-      <p class="produce-words">
+      <p class="produce-words ale" data-animate="s-r">
         在为用户提供高性价比产品的同时，更注重于为用户提供全心全意的服务，把客户当成我们的朋友。我公司拥有一支强有力的技术服务和销售团体，兢兢业业，勇于创新，抱着与各个厂家和商家团结、合作、开拓、发展的经营宗旨，注重信誉，强调服务，以忘我的敬业精神和精湛的技术为用户提供服务，立志成为本地首屈一指的专业化IT公司。
         诚信为本、质量为先、精益求精、客户至上！我们一直追求能让您满意的产品品质和服务。我们相信有您的支持我们会做的更好。
       </p>
@@ -63,22 +63,22 @@
 
     <div class="future-part">
       <h3 class="title">期许未来</h3>
-      <div class="part1">
+      <div class="part1 ale" data-animate="s-l">
         <p class="desc">
           我们已经走过了一个十年，接下来就是对下一个十年的期许；
         </p>
       </div>
-      <div class="part1">
+      <div class="part1 ale" data-animate="s-r">
         <p class="desc">
           期许着在未来的十年，我们与老朋友依旧可以风雨同舟，共同前行；
         </p>
       </div>
-      <div class="part1">
+      <div class="part1 ale" data-animate="s-l">
         <p class="desc">
           也坚信，不管是十年、二十年、五十年，我们会结下更多的缘分，相互扶持，走向更好的未来；
         </p>
       </div>
-      <div class="part1">
+      <div class="part1 ale" data-animate="s-r">
         <p class="desc">
           不久的时间，我们将会在线上同步线下的品类以及服务；为了更好的服务于大家，我们将尽快完善线上功能，完成上线，大家耐心期待；
         </p>
@@ -111,9 +111,10 @@ export default {
       logo: require('@s/images/home/logo2.png'),
       code: require('@s/images/about/qrcode.png'),
       carouselList: [
-        { src: require('@s/images/about/banner3.png'), title: '电脑/监控' },
-        { src: require('@s/images/about/banner1.png'), title: '电脑/监控' },
-        { src: require('@s/images/about/banner2.png'), title: '电脑/监控' },
+        { src: require('@s/images/about/about1.png'), title: '电脑/监控' },
+        { src: require('@s/images/about/about2.png'), title: '电脑/监控' },
+        { src: require('@s/images/about/about3.png'), title: '电脑/监控' },
+        { src: require('@s/images/about/about4.png'), title: '电脑/监控' },
       ],
       storeList: [
         { src: require('@s/images/about/store1.jpeg'), title: '电脑/监控' },

@@ -117,9 +117,6 @@ export default {
       })
     },
   },
-  destroyed() {
-    this.map.off('click', this._handleClickMap)
-  },
 }
 </script>
 
@@ -138,7 +135,7 @@ export default {
     }
 
     .e-title {
-      padding-top: 12px;
+      padding-top: 8px;
       font-size: 14px;
       color: #999;
       text-align: center;

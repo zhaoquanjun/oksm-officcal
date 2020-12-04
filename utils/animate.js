@@ -4,17 +4,35 @@
  */
 
 const animate = {
-  // 初始化真个动画事件
+
+  /**
+   * @name 初始化整个动画事件
+   */
   init() {
-    this._addSomeTypesOfAnimates()
+    this._addSomeTypesOfAnimates(document.documentElement.scrollTop)
     this._addScrollEventListener()
   },
 
-  // 全局增加滚动时间监听
+  /**
+   * @name 全局增加滚动事件监听
+   */
   _addScrollEventListener() {
-    document.addEventListener('scroll', (e) => {
-      this._addSomeTypesOfAnimates(e.target.scrollingElement.scrollTop)
-    })
+    document.addEventListener('scroll', this._documentSrcollEvent)
+  },
+
+  /**
+   * @name 清除全局滚动事件
+   */
+  _removeScrollEvent() {
+    this._getAllAnimateEle('.ale').length && document.removeEventListener('scroll', this._documentSrcollEvent)
+  },
+
+  /**
+   * @name 全局滚动具名事件
+   * @param {*} e 事件源
+   */
+  _documentSrcollEvent(e) {
+    animate._addSomeTypesOfAnimates(e.target.scrollingElement.scrollTop)
   },
 
   /**
@@ -43,6 +61,7 @@ const animate = {
    * @param {*} ele 元素本身
    */
   _setPrevAnimate(animateType, ele) {
+    if (ele.getAttribute('data-animating')) return
     switch (animateType) {
       case 's-l':
         this._setSlideLeftPrevStyle(ele)
@@ -62,6 +81,7 @@ const animate = {
       default:
         break
     }
+    ele.setAttribute('data-animating', true)
   },
 
   /**
@@ -70,7 +90,7 @@ const animate = {
    * @param {*} ele 元素本身
    */
   _setCurrentAnimate(animateType, ele) {
-    setTimeout(() => {}, 500)
+    const selfClearList = ['list']
     switch (animateType) {
       case 's-l':
         setTimeout(() => {
@@ -98,14 +118,14 @@ const animate = {
       default:
         break
     }
-    this._removeAnimate(ele)
+    !selfClearList.includes(animateType) && this._removeAnimate(ele)
   },
 
   /**
    * @name 获取所有动画相关的元素
    */
   _getAllAnimateEle() {
-    return document.querySelectorAll('.ale')
+    return document.querySelectorAll('.ale') ? document.querySelectorAll('.ale') : []
   },
 
   /**
@@ -116,25 +136,21 @@ const animate = {
   // slide-left prev
   _setSlideLeftPrevStyle(ele) {
     ele.style.transform = 'translateX(-100%)'
-    ele.style.opacity = '0'
   },
 
   // slide-top prev
   _setSlideTopPrevStyle(ele) {
     ele.style.transform = 'translateY(-100%)'
-    ele.style.opacity = '0'
   },
 
   // slide-right prev
   _setSlideRightPrevStyle(ele) {
     ele.style.transform = 'translateX(100%)'
-    ele.style.opacity = '0'
   },
 
   // slide-bottom prev
   _setSlideBottomPrevStyle(ele) {
     ele.style.transform = 'translateY(100%)'
-    ele.style.opacity = '0'
   },
 
   // list prev
@@ -179,13 +195,14 @@ const animate = {
 
   // list current
   _setListCurrentStyle(ele) {
+    ele.style.opacity = 1
     Array.prototype.forEach.call(ele.childNodes, (e, i) => {
       setTimeout(() => {
         this._setSliderTopCurrentStyle(e)
-        this._removeAnimate(e)
         setTimeout(() => {
           e.style.transition = 'all .25s ease-in-out'
         }, 150)
+        i == ele.childNodes.length - 1 && this._removeAnimate(ele)
       }, 250 * i)
     })
   },
