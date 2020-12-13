@@ -123,10 +123,11 @@ export default {
 <style lang="scss" scoped>
 .contact-us--page {
   .image-space {
-    margin-bottom: 48px;
-    height: 460px;
+    margin-bottom: 120px;
+    height: 500px;
     width: 100%;
     background: url('~@s/images/contact/contact_space.png') no-repeat center center;
+    background-size: cover;
   }
 
   .contact-area {

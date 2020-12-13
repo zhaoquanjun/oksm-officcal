@@ -57,6 +57,12 @@ html, body {
   background-color: #fff;
 }
 
+body::-webkit-scrollbar { width: 0 !important }
+
+body { -ms-overflow-style: none; }
+
+body{ overflow: -moz-scrollbars-none; }
+
 *, *::before, *::after {
   box-sizing: inherit;
 }
