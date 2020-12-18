@@ -4,9 +4,6 @@
     <div class="contact-area content-area">
       <h4 class="title">联系我们</h4>
       <p class="e-title">CONTACT US</p>
-      <p class="desc">
-        如果您有我们能力范围内的需求，或者合作的意向，请您随时联系，我们随时恭候
-      </p>
     </div>
     <div class="map-part content-area">
       <div class="contact-ways">
@@ -123,7 +120,7 @@ export default {
 <style lang="scss" scoped>
 .contact-us--page {
   .image-space {
-    margin-bottom: 120px;
+    margin-bottom: 80px;
     height: 500px;
     width: 100%;
     background: url('~@s/images/contact/contact_space.png') no-repeat center center;

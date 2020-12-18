@@ -1,30 +1,21 @@
 <template>
   <div class="oksm-home--page min-width">
-    <div class="caousel-part" id="carousel">
-      <swiper ref="mySwiper" :options="swiperOption">
-        <swiper-slide v-for="(item, index) in carouselList" :key="index">
-          <div
-            class="carousel-inner"
-            :style="{
-              backgroundImage: `url(${item.src})`,
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: 'cover',
-              backgroundPosition: 'top center',
-            }"
-          >
-            <template>
-              <p class="inner-title ale" data-animate="s-t">
-                {{ item.cdes }}
-              </p>
-              <p class="inner-desc ale" data-animate="s-b">
-                {{ item.edes }}
-              </p>
-            </template>
+    <div class="caousel-area">
+      <swiper>
+        <div
+          class="swiper-slider"
+          v-for="(item, index) in carousels"
+          :key="index"
+          :style="{
+            background: `url(${item.src}) no-repeat center center`,
+            backgroundSize: 'cover',
+          }"
+        >
+          <div class="content-center">
+            <h4 class="title-ch ale" data-animate="s-t">{{ item.desc }}</h4>
+            <p class="title-es ale" data-animate="s-b">{{ item.edes }}</p>
           </div>
-        </swiper-slide>
-        <div class="swiper-pagination" slot="pagination"></div>
-        <div class="swiper-button-prev" slot="button-prev"></div>
-        <div class="swiper-button-next" slot="button-next"></div>
+        </div>
       </swiper>
     </div>
     <div class="company-part content-area">
@@ -130,161 +121,150 @@
   </div>
 </template>
 <script>
+import Swiper from '@c/swiper'
 export default {
   data() {
     return {
-      swiperOption: {
-        autoplay: {
-          delay: 1000,
-          disableOnInteraction: false, // 手动切换之后继续自动轮播
-        },
-        loop: true,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true, // 允许点击小圆点跳转
-        },
-      },
-      carouselList: [
+      carousels: [
         {
-          src: require("@s/images/home/home1.png"),
-          title: "电脑/监控",
-          cdes: "尽心尽力的服务",
-          edes: "THE DEDICATED SERVICE",
+          src: require('@s/images/home/home1.png'),
+          title: '电脑，监控，网络工程，机房，线上线下电子产品销售',
+          desc: '尽心尽力的服务',
+          edes: 'THE DEDICATED SERVICE',
         },
         {
-          src: require("@s/images/home/home2.png"),
-          title: "电脑/监控",
-          cdes: "优秀靠谱的品质",
-          edes: "THE EXCELLENT QUALITY",
+          src: require('@s/images/home/home2.png'),
+          title: '电脑，监控，网络工程，机房，线上线下电子产品销售',
+          desc: '优秀靠谱的品质',
+          edes: 'THE EXCELLENT QUALITY',
         },
         {
-          src: require("@s/images/home/home3.png"),
-          title: "电脑/监控",
-          cdes: "高价值的解决方案",
-          edes: "THE HIGH-VALUE SOLUTIONS",
+          src: require('@s/images/home/home3.png'),
+          title: '电脑，监控，网络工程，机房，线上线下电子产品销售',
+          desc: '高价值的解决方案',
+          edes: 'THE HIGH-VALUE SOLUTIONS',
         },
         {
-          src: require("@s/images/home/home4.png"),
-          title: "电脑/监控",
-          cdes: "值得信赖的选择",
-          edes: "A TRUSTWORTHY CHOICE",
+          src: require('@s/images/home/home4.png'),
+          title: '电脑，监控，网络工程，机房，线上线下电子产品销售',
+          desc: '值得信赖的选择',
+          edes: 'A TRUSTWORTHY CHOICE',
         },
       ],
       productList: [
         {
-          title: "笔记本",
-          desc: "各品牌笔记本电脑",
-          src: require("@s/images/home/mac.png"),
+          title: '笔记本',
+          desc: '各品牌笔记本电脑',
+          src: require('@s/images/home/mac.png'),
         },
         {
-          title: "台式机",
-          desc: "各品牌台式电脑",
-          src: require("@s/images/home/pc.png"),
+          title: '台式机',
+          desc: '各品牌台式电脑',
+          src: require('@s/images/home/pc.png'),
         },
         {
-          title: "iPad",
-          desc: "各品牌平板电脑",
-          src: require("@s/images/home/ipad.png"),
+          title: 'iPad',
+          desc: '各品牌平板电脑',
+          src: require('@s/images/home/ipad.png'),
         },
         {
-          title: "监控设备",
-          desc: "高清数字监控设备",
-          src: require("@s/images/home/monitoring.png"),
+          title: '监控设备',
+          desc: '高清数字监控设备',
+          src: require('@s/images/home/monitoring.png'),
         },
         {
-          title: "充电器",
-          desc: "电脑配件",
-          src: require("@s/images/home/pc_charger.png"),
+          title: '充电器',
+          desc: '电脑配件',
+          src: require('@s/images/home/pc_charger.png'),
         },
         {
-          title: "显卡",
-          desc: "电脑配件",
-          src: require("@s/images/home/graphics_card.png"),
+          title: '显卡',
+          desc: '电脑配件',
+          src: require('@s/images/home/graphics_card.png'),
         },
         {
-          title: "电源",
-          desc: "电脑配件",
-          src: require("@s/images/home/power.png"),
+          title: '电源',
+          desc: '电脑配件',
+          src: require('@s/images/home/power.png'),
         },
         {
-          title: "手机配件",
-          desc: "各品牌手机数据线",
-          src: require("@s/images/home/cable.png"),
+          title: '手机配件',
+          desc: '各品牌手机数据线',
+          src: require('@s/images/home/cable.png'),
         },
       ],
       plans: {
         prev: [
           {
-            icon: "icon-ziyuan",
-            desc: "需求对接",
+            icon: 'icon-ziyuan',
+            desc: '需求对接',
           },
-          { arrow: "icon-jiantou1", deg: 0 },
+          { arrow: 'icon-jiantou1', deg: 0 },
           {
-            icon: "icon-fenxi",
-            desc: "需求分析",
+            icon: 'icon-fenxi',
+            desc: '需求分析',
           },
-          { arrow: "icon-jiantou1", deg: 0 },
+          { arrow: 'icon-jiantou1', deg: 0 },
           {
-            icon: "icon-fangan3",
-            desc: "制定方案",
+            icon: 'icon-fangan3',
+            desc: '制定方案',
           },
         ],
         next: [
           {
-            icon: "icon-weihu1",
-            desc: "后期维护",
+            icon: 'icon-weihu1',
+            desc: '后期维护',
           },
-          { arrow: "icon-jiantou1", deg: 180 },
+          { arrow: 'icon-jiantou1', deg: 180 },
           {
-            icon: "icon-yanshou3",
-            desc: "交付验收",
+            icon: 'icon-yanshou3',
+            desc: '交付验收',
           },
-          { arrow: "icon-jiantou1", deg: 180 },
+          { arrow: 'icon-jiantou1', deg: 180 },
           {
-            icon: "icon-shishi",
-            desc: "工程实施",
+            icon: 'icon-shishi',
+            desc: '工程实施',
           },
-          { arrow: "icon-jiantou1", deg: 180 },
+          { arrow: 'icon-jiantou1', deg: 180 },
           {
-            icon: "icon-jiaofu1",
-            desc: "方案交付",
+            icon: 'icon-jiaofu1',
+            desc: '方案交付',
           },
         ],
       },
       serviceList: [
         {
-          title: "时间的沉淀",
-          desc: "历经时间风雨，留下了真诚",
-          color: "#409EFF",
+          title: '时间的沉淀',
+          desc: '历经时间风雨，留下了真诚',
+          color: '#409EFF',
         },
-        { title: "靠谱的品质", desc: "优质货源，精致商品", color: "#E6A23C" },
+        { title: '靠谱的品质', desc: '优质货源，精致商品', color: '#E6A23C' },
         {
-          title: "诱人的性价比",
-          desc: "不选最贵，只选最适合",
-          color: "#F56C6C",
+          title: '诱人的性价比',
+          desc: '不选最贵，只选最适合',
+          color: '#F56C6C',
         },
         {
-          title: "优质的服务",
-          desc: "尽最大努力，给每一位用户最优质的服务",
-          color: "#67C23A",
+          title: '优质的服务',
+          desc: '尽最大努力，给每一位用户最优质的服务',
+          color: '#67C23A',
         },
       ],
-      companyImage: require("@s/images/home/company.png"),
-    };
+      companyImage: require('@s/images/home/company.png'),
+    }
+  },
+  components: {
+    Swiper,
   },
   methods: {
     _handleViewAbout() {
-      this.$router.push("/about");
+      this.$router.push('/about')
     },
     _handleViewSolution() {
-      this.$router.push("/solution");
+      this.$router.push('/solution')
     },
   },
-};
+}
 </script>
 <style lang="scss" scoped>
 .oksm-home--page {
@@ -299,7 +279,7 @@ export default {
 
     .title {
       font-size: 40px;
-      font-family: "PingFangSC-Medium, PingFang SC";
+      font-family: 'PingFangSC-Medium, PingFang SC';
       font-weight: 500;
       color: #333333;
       line-height: 45px;
@@ -308,47 +288,28 @@ export default {
     }
   }
 
-  .caousel-part {
+  .caousel-area {
     width: 100%;
 
-    .swiper-wrapper {
-      .swiper-slide {
-        .carousel-inner {
-          position: relative;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          align-content: center;
-          flex-wrap: wrap;
+    .swiper-slider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+
+      .content-center {
+        width: 100%;
+        color: #fff;
+        text-align: center;
+
+        h4.title-ch {
           width: 100%;
-          height: 50vw;
+          font-size: 5vw;
+        }
 
-          .inner-title {
-            font-size: 6vw;
-            font-weight: bold;
-            color: #ff6a00;
-            text-align: center;
-            width: 100%;
-            opacity: 0;
-            transform: translateY(-100%);
-            transition: all 1s ease-in-out;
-          }
-
-          .inner-desc {
-            font-size: 4vw;
-            font-weight: bold;
-            color: #ff6a00;
-            text-align: center;
-            width: 100%;
-            opacity: 0;
-            transform: translateY(100%);
-            transition: all 1s ease-in-out;
-          }
-
-          .show {
-            opacity: 1;
-            transform: translateY(0);
-          }
+        p.title-es {
+          width: 100%;
+          font-size: 3vw;
         }
       }
     }
@@ -388,7 +349,7 @@ export default {
         left: -75%;
         z-index: 2;
         display: block;
-        content: "";
+        content: '';
         width: 50%;
         height: 100%;
         background: -webkit-linear-gradient(
@@ -422,11 +383,10 @@ export default {
   }
 
   .goods-part {
-
     .title {
       text-align: center;
       font-size: 40px;
-      font-family: "PingFangSC-Medium, PingFang SC";
+      font-family: 'PingFangSC-Medium, PingFang SC';
       font-weight: 500;
       color: #333333;
       line-height: 45px;
@@ -510,7 +470,7 @@ export default {
   .resolve-part {
     .title {
       font-size: 40px;
-      font-family: "PingFangSC-Medium, PingFang SC";
+      font-family: 'PingFangSC-Medium, PingFang SC';
       font-weight: 500;
       color: #333333;
       line-height: 45px;
@@ -608,10 +568,9 @@ export default {
   }
 
   .service-area {
-
     .title {
       font-size: 40px;
-      font-family: "PingFangSC-Medium, PingFang SC";
+      font-family: 'PingFangSC-Medium, PingFang SC';
       font-weight: 500;
       color: #333333;
       line-height: 45px;

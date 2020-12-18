@@ -1,21 +1,17 @@
 <template>
   <div class="oksm-about--page">
-    <div class="caousel-area" id="carousel">
-      <swiper ref="mySwiper" :options="swiperOptions">
-        <swiper-slide v-for="(item, index) in carouselList" :key="index">
-          <div
-            class="carousel-inner"
-            :style="{
-              backgroundImage: `url(${item.src})`,
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: 'cover',
-              backgroundPosition: 'top center',
-            }"
-          ></div>
-        </swiper-slide>
-        <div class="swiper-button-prev" slot="button-prev"></div>
-        <div class="swiper-button-next" slot="button-next"></div>
-        <div class="swiper-pagination" slot="pagination"></div>
+    <div class="caousel-area">
+      <swiper>
+        <div
+          class="swiper-slider"
+          v-for="(item, index) in carousels"
+          :key="index"
+          :style="{
+            background: `url(${item.src}) no-repeat center center`,
+            backgroundSize: 'cover',
+          }"
+        >
+        </div>
       </swiper>
     </div>
     <div class="introduce-part content-area">
@@ -105,24 +101,65 @@
 </template>
 
 <script>
+import Swiper from '@c/swiper'
 export default {
   data() {
     return {
       logo: require('@s/images/home/logo2.png'),
       code: require('@s/images/about/qrcode.png'),
-      carouselList: [
-        { src: require('@s/images/about/about1.png'), title: '电脑/监控' },
-        { src: require('@s/images/about/about2.png'), title: '电脑/监控' },
-        { src: require('@s/images/about/about3.png'), title: '电脑/监控' },
-        { src: require('@s/images/about/about4.png'), title: '电脑/监控' },
+      carousels: [
+        {
+          src: require('@s/images/about/about1.png'),
+          title:
+            '电脑销售，监控安防，电信服务，网络安装，软硬件维修，数据处理，线上线下电子产品销售',
+        },
+        {
+          src: require('@s/images/about/about2.png'),
+          title:
+            '电脑销售，监控安防，电信服务，网络安装，软硬件维修，数据处理，线上线下电子产品销售',
+        },
+        {
+          src: require('@s/images/about/about3.png'),
+          title:
+            '电脑销售，监控安防，电信服务，网络安装，软硬件维修，数据处理，线上线下电子产品销售',
+        },
+        {
+          src: require('@s/images/about/about4.png'),
+          title:
+            '电脑销售，监控安防，电信服务，网络安装，软硬件维修，数据处理，线上线下电子产品销售',
+        },
       ],
       storeList: [
-        { src: require('@s/images/about/store1.jpeg'), title: '电脑/监控' },
-        { src: require('@s/images/about/store2.jpeg'), title: '电脑/监控' },
-        { src: require('@s/images/about/store3.jpeg'), title: '电脑/监控' },
-        { src: require('@s/images/about/store4.jpeg'), title: '电脑/监控' },
-        { src: require('@s/images/about/store5.jpeg'), title: '电脑/监控' },
-        { src: require('@s/images/about/store6.jpeg'), title: '电脑/监控' },
+        {
+          src: require('@s/images/about/store1.jpeg'),
+          title:
+            '电脑销售，监控安防，电信服务，网络安装，软硬件维修，数据处理，线上线下电子产品销售',
+        },
+        {
+          src: require('@s/images/about/store2.jpeg'),
+          title:
+            '电脑销售，监控安防，电信服务，网络安装，软硬件维修，数据处理，线上线下电子产品销售',
+        },
+        {
+          src: require('@s/images/about/store3.jpeg'),
+          title:
+            '电脑销售，监控安防，电信服务，网络安装，软硬件维修，数据处理，线上线下电子产品销售',
+        },
+        {
+          src: require('@s/images/about/store4.jpeg'),
+          title:
+            '电脑销售，监控安防，电信服务，网络安装，软硬件维修，数据处理，线上线下电子产品销售',
+        },
+        {
+          src: require('@s/images/about/store5.jpeg'),
+          title:
+            '电脑销售，监控安防，电信服务，网络安装，软硬件维修，数据处理，线上线下电子产品销售',
+        },
+        {
+          src: require('@s/images/about/store6.jpeg'),
+          title:
+            '电脑销售，监控安防，电信服务，网络安装，软硬件维修，数据处理，线上线下电子产品销售',
+        },
       ],
       swiperOptions: {
         pagination: {
@@ -141,6 +178,9 @@ export default {
       },
     }
   },
+  components: {
+    Swiper,
+  },
 }
 </script>
 
@@ -150,21 +190,6 @@ export default {
 
   .caousel-area {
     width: 100%;
-
-    .swiper-wrapper {
-      .swiper-slide {
-        .carousel-inner {
-          position: relative;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          align-content: center;
-          flex-wrap: wrap;
-          width: 100%;
-          height: 50vw;
-        }
-      }
-    }
   }
 
   .introduce-part {

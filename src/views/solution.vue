@@ -120,7 +120,7 @@ export default {};
   }
 
   .title {
-    margin-top: 120px;
+    margin-top: 80px;
   }
 
   .sub-title {
