@@ -279,7 +279,7 @@ export default {
 
     .title {
       font-size: 40px;
-      font-family: 'PingFangSC-Medium, PingFang SC';
+      font-family: PingFangSC-Medium, PingFang SC;
       font-weight: 500;
       color: #333333;
       line-height: 45px;
@@ -386,7 +386,7 @@ export default {
     .title {
       text-align: center;
       font-size: 40px;
-      font-family: 'PingFangSC-Medium, PingFang SC';
+      font-family: PingFangSC-Medium, PingFang SC;
       font-weight: 500;
       color: #333333;
       line-height: 45px;
@@ -470,7 +470,7 @@ export default {
   .resolve-part {
     .title {
       font-size: 40px;
-      font-family: 'PingFangSC-Medium, PingFang SC';
+      font-family: PingFangSC-Medium, PingFang SC;
       font-weight: 500;
       color: #333333;
       line-height: 45px;
@@ -570,7 +570,7 @@ export default {
   .service-area {
     .title {
       font-size: 40px;
-      font-family: 'PingFangSC-Medium, PingFang SC';
+      font-family: PingFangSC-Medium, PingFang SC;
       font-weight: 500;
       color: #333333;
       line-height: 45px;

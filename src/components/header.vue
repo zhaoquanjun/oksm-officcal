@@ -1,7 +1,10 @@
 <template>
   <div class="oksm-header--section" :class="{ bg: hasScrollOverCarousel }">
     <div class="header-wrapper">
-      <div class="logo">欧科 <span>OK</span></div>
+      <div class="logo">
+        <img :src="logo" alt="" v-show="!hasScrollOverCarousel">
+        <img :src="activeLogo" alt="" v-show="hasScrollOverCarousel">
+      </div>
       <ul class="nav-wrapper">
         <li
           class="nav-item"
@@ -32,7 +35,8 @@ export default {
           path: "/solution",
         },
       ],
-      logo: require("@s/images/home/logo.png"),
+      logo: require("@s/images/logo.png"),
+      activeLogo: require("@s/images/logo_active.png"),
       hasScrollOverCarousel: false,
     };
   },
@@ -84,14 +88,7 @@ export default {
     width: 1200px;
 
     .logo {
-      font-size: 32px;
-      font-weight: bold;
-      color: #fff;
-      font-style: italic;
-
-      span {
-        font-style: italic;
-      }
+      width: 160px;
     }
 
     .nav-wrapper {
@@ -105,7 +102,7 @@ export default {
         cursor: pointer;
         color: #fff;
         font-size: 16px;
-        font-family: " PingFangSC-Regular, PingFang SC";
+        font-family: PingFangSC-Regular, PingFang SC;
         font-weight: 400;
         letter-spacing: 1px;
 

@@ -50,7 +50,7 @@ textarea {
 html, body {
   // 基础字体大小
   font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Hiragino Sans GB",
-  "Microsoft YaHei", "微软雅黑", Arial, sans-serif;;
+  "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   font-size: 14px;
   color: #333;
   box-sizing: border-box;
@@ -59,9 +59,9 @@ html, body {
 
 body::-webkit-scrollbar { width: 0 !important }
 
-body { -ms-overflow-style: none; }
+body{ -ms-overflow-style: none; }
 
-body{ overflow: -moz-scrollbars-none; }
+body
 
 *, *::before, *::after {
   box-sizing: inherit;

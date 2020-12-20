@@ -105,7 +105,7 @@ import Swiper from '@c/swiper'
 export default {
   data() {
     return {
-      logo: require('@s/images/home/logo2.png'),
+      logo: require('@s/images/logo_active.png'),
       code: require('@s/images/about/qrcode.png'),
       carousels: [
         {
