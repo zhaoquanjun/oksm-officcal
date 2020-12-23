@@ -99,9 +99,14 @@ th:not([align]) {
 
 .content-area {
   margin: 0 auto;
-  min-width: 1024px;
+  padding: 0 48px;
+  min-width: 1200px;
   max-width: 1260px;
   overflow: hidden;
+
+  @media screen and (min-width: 1260px) {
+    width: 1260px;
+  }
 }
 
 .title {

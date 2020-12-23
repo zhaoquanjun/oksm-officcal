@@ -14,14 +14,14 @@
       </p>
     </div> -->
     <h3 class="title">解决方案</h3>
-    <p class="sub-title">SOLUTION</p>
+    <p class="sub-title">PLAN</p>
     <ul class="resolve-wrapper content-area">
       <li class="step">
         <div class="words-area">
           <h4 class="tit">需求对接</h4>
-          <p class="sub-title">线上或者线下沟通，确认需求</p>
+          <p class="sub-title">DEMAND DOCKING</p>
           <p class="desc">
-            您可以通过电话、微信、QQ等线上方式或者直接到我们营业点这两种方式与我们取得联系，描述您的需求，我们会在当下给出您解决方向，以确认是否进一步沟通确认合作
+            您可以通过电话、微信、QQ等线上方式或者直接到我们营业点这两种方式与我们取得联系，描述您的需求，我们会在当下给出您解决方向，以确认是否进一步合作
           </p>
         </div>
         <div class="image-area">
@@ -34,18 +34,18 @@
         </div>
         <div class="words-area">
           <h4 class="tit">需求分析</h4>
-          <p class="sub-title">专业的人员提供专业评审、解决方案</p>
+          <p class="sub-title">DEMAND ANALYSIS</p>
           <p class="desc">
-            您可以通过电话、微信、QQ等线上方式或者直接到我们营业点这两种方式与我们取得联系，描述您的需求，我们会在当下给出您解决方向，以确认是否进一步沟通确认合作
+            针对您的需求，进行专业的解读、分析
           </p>
         </div>
       </li>
       <li class="step">
         <div class="words-area">
           <h4 class="tit">制定方案</h4>
-          <p class="sub-title">线上或者线下沟通，确认需求</p>
+          <p class="sub-title">MAKE PLAN</p>
           <p class="desc">
-            您可以通过电话、微信、QQ等线上方式或者直接到我们营业点这两种方式与我们取得联系，描述您的需求，我们会在当下给出您解决方向，以确认是否进一步沟通确认合作
+            结合当下季节以及实际施工场地，综合考虑制定可行性方案；沟通预算成本，筛选最适合您的方案
           </p>
         </div>
         <div class="image-area">
@@ -58,18 +58,18 @@
         </div>
         <div class="words-area">
           <h4 class="tit">方案交付</h4>
-          <p class="sub-title">线上或者线下沟通，确认需求</p>
+          <p class="sub-title">PLAN DELIVERY</p>
           <p class="desc">
-            您可以通过电话、微信、QQ等线上方式或者直接到我们营业点这两种方式与我们取得联系，描述您的需求，我们会在当下给出您解决方向，以确认是否进一步沟通确认合作
+            就制定方案沟通、调整，达成共识，完成方案交付
           </p>
         </div>
       </li>
       <li class="step">
         <div class="words-area">
           <h4 class="tit">方案实施</h4>
-          <p class="sub-title">线上或者线下沟通，确认需求</p>
+          <p class="sub-title">PLAN IMPLEMENTATIONn</p>
           <p class="desc">
-            您可以通过电话、微信、QQ等线上方式或者直接到我们营业点这两种方式与我们取得联系，描述您的需求，我们会在当下给出您解决方向，以确认是否进一步沟通确认合作
+            签订完成合同，施工队伍入场开始施工，在有效工期内完成施工任务
           </p>
         </div>
         <div class="image-area">
@@ -82,18 +82,18 @@
         </div>
         <div class="words-area">
           <h4 class="tit">交付验收</h4>
-          <p class="sub-title">线上或者线下沟通，确认需求</p>
+          <p class="sub-title">DELIVERY AACCEPTANCE</p>
           <p class="desc">
-            您可以通过电话、微信、QQ等线上方式或者直接到我们营业点这两种方式与我们取得联系，描述您的需求，我们会在当下给出您解决方向，以确认是否进一步沟通确认合作
+            施工完毕，校验无误，交付需求方验收、签字
           </p>
         </div>
       </li>
       <li class="step">
         <div class="words-area">
           <h4 class="tit">后期维护</h4>
-          <p class="sub-title">线上或者线下沟通，确认需求</p>
+          <p class="sub-title">LATER MAINTENANCE</p>
           <p class="desc">
-            您可以通过电话、微信、QQ等线上方式或者直接到我们营业点这两种方式与我们取得联系，描述您的需求，我们会在当下给出您解决方向，以确认是否进一步沟通确认合作
+            在有效的合同期内，对于工程在保设施进行维护维修，保证稳定有效运行
           </p>
         </div>
         <div class="image-area">
@@ -120,7 +120,7 @@ export default {};
   }
 
   .title {
-    margin-top: 80px;
+    margin-top: 120px;
   }
 
   .sub-title {
