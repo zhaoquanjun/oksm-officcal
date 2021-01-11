@@ -1,8 +1,8 @@
 <template>
   <div class="oksm-footer--section">
-    <p class="desc-item">欧科网络科技有限公司</p>
-    <p class="desc-item"></p>
-    <p class="desc-item">版权所有 欧科网络科技有限公司 © Copyright 2020 - 2030.欧科网络 All Rights Reserved</p>
+    <!-- <p class="desc-item">欧科网络科技有限公司</p> -->
+    <p class="desc-item"><a href="http://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">冀ICP备2020030669号-1</a></p>
+    <p class="desc-item">版权所有 欧科网络科技有限公司 © Copyright 2020 - 2030 欧科网络 All Rights Reserved</p>
   </div>
 </template>
 
@@ -25,6 +25,11 @@ export default {
   .desc-item {
     font-size: 12px;
     line-height: 32px;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
   }
 }
 </style>
