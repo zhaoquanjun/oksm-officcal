@@ -1,6 +1,6 @@
 <template>
   <div class="oksm-header--section" :class="{ bg: hasScrollOverCarousel }">
-    <div class="header-wrapper">
+    <div class="header-wrapper content-area">
       <div class="logo">
         <img :src="logo" alt="" v-show="!hasScrollOverCarousel">
         <img :src="activeLogo" alt="" v-show="hasScrollOverCarousel">
@@ -34,6 +34,12 @@ export default {
           value: 4,
           path: "/solution",
         },
+        //  {
+        //   chinese: "招贤纳士",
+        //   english: "recruiting",
+        //   value: 4,
+        //   path: "/recruiting",
+        // },
       ],
       logo: require("@s/images/logo.png"),
       activeLogo: require("@s/images/logo_active.png"),
@@ -84,8 +90,6 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 auto;
-    width: 1200px;
 
     .logo {
       width: 160px;
@@ -107,12 +111,18 @@ export default {
         letter-spacing: 1px;
 
         &:hover {
-          color: #ff6a00;
+          // color: #ff6a00;
+          // font-weight: bold;
+          transform: translate3d(0, 0, 10px);
+          text-shadow: 2px 2px 5px #fff;
         }
       }
 
       .active {
-        color: #ff6a00;
+        // color: #ff6a00;
+        // font-weight: bold;
+        transform: translate3d(0, 0, 10px);
+        text-shadow: 2px 2px 5px #fff;
       }
     }
   }

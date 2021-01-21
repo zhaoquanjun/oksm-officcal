@@ -1,17 +1,35 @@
 <template>
   <div class="oksm-footer--section">
     <!-- <p class="desc-item">欧科网络科技有限公司</p> -->
-    <p class="desc-item"><a href="http://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">冀ICP备2020030669号-1</a></p>
-    <p class="desc-item">版权所有 欧科网络科技有限公司 © Copyright 2020 - 2030 欧科网络 All Rights Reserved</p>
+    <p class="desc-item">
+      <a
+        class="item"
+        href="http://beian.miit.gov.cn"
+        target="_blank"
+        rel="noopener noreferrer"
+        >冀ICP备2020030669号-1</a
+      ><span class="divider">|</span>
+      <a
+        class="item"
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13072202000052"
+        target="_blank"
+        ><img src="@s/images/ga.png" alt="" />
+        <p>冀公网安备 13072202000052号</p></a
+      >
+    </p>
+    <p class="desc-item">
+      版权所有 欧科网络科技有限公司 © Copyright 2020 - 2030 欧科网络 All Rights
+      Reserved
+    </p>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {}
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -23,12 +41,28 @@ export default {
   background-color: rgb(51, 51, 51);
 
   .desc-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 12px;
     line-height: 32px;
 
     a {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
       color: #fff;
       text-decoration: none;
+
+      img {
+        margin-right: 4px;
+        width: 14px;
+      }
+    }
+
+    .divider {
+      margin: 0 16px;
+      color: #ccc;
     }
   }
 }

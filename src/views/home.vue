@@ -1,22 +1,21 @@
 <template>
   <div class="oksm-home--page min-width">
-    <div class="caousel-area">
-      <swiper>
-        <div
-          class="swiper-slider"
-          v-for="(item, index) in carousels"
-          :key="index"
-          :style="{
-            background: `url(${item.src}) no-repeat center center`,
-            backgroundSize: 'cover',
-          }"
-        >
-          <div class="content-center">
-            <h4 class="title-ch ale" data-animate="s-t">{{ item.desc }}</h4>
-            <p class="title-es ale" data-animate="s-b">{{ item.edes }}</p>
-          </div>
+    <div class="banner-area">
+      <div class="banner-inner content-area">
+        <div class="slogan ale" data-animate="s-t">
+          <h5 class="title">OUKEWL</h5>
+          <p class="desc">
+            集电脑销售、监控安防、电信服务、</br>网络安装、软硬件维修、数据处理等一体化服务
+          </p>
         </div>
-      </swiper>
+        <div class="image-area ale" data-animate="s-b">
+          <ul class="decoration">
+            <li class="decor1"></li>
+            <li class="decor2"></li>
+          </ul>
+          <div class="logo"><img src="@s/images/home/banner_logo.png" alt="" /></div>
+        </div>
+      </div>
     </div>
     <div class="company-part content-area">
       <div class="image-part ani-flashShine ale" data-animate="s-l">
@@ -121,150 +120,146 @@
   </div>
 </template>
 <script>
-import Swiper from '@c/swiper'
 export default {
   data() {
     return {
-      carousels: [
-        {
-          src: require('@s/images/home/home1.png'),
-          title: '电脑，监控，网络工程，机房，线上线下电子产品销售',
-          desc: '尽心尽力的服务',
-          edes: 'THE DEDICATED SERVICE',
-        },
-        {
-          src: require('@s/images/home/home2.png'),
-          title: '电脑，监控，网络工程，机房，线上线下电子产品销售',
-          desc: '优秀靠谱的品质',
-          edes: 'THE EXCELLENT QUALITY',
-        },
-        {
-          src: require('@s/images/home/home3.png'),
-          title: '电脑，监控，网络工程，机房，线上线下电子产品销售',
-          desc: '高价值的解决方案',
-          edes: 'THE HIGH-VALUE SOLUTIONS',
-        },
-        {
-          src: require('@s/images/home/home4.png'),
-          title: '电脑，监控，网络工程，机房，线上线下电子产品销售',
-          desc: '值得信赖的选择',
-          edes: 'A TRUSTWORTHY CHOICE',
-        },
-      ],
+      // carousels: [
+      //   {
+      //     src: require("@s/images/home/home1.png"),
+      //     title: "电脑，监控，网络工程，机房，线上线下电子产品销售",
+      //     desc: "尽心尽力的服务",
+      //     edes: "THE DEDICATED SERVICE",
+      //   },
+      //   {
+      //     src: require("@s/images/home/home2.png"),
+      //     title: "电脑，监控，网络工程，机房，线上线下电子产品销售",
+      //     desc: "优秀靠谱的品质",
+      //     edes: "THE EXCELLENT QUALITY",
+      //   },
+      //   {
+      //     src: require("@s/images/home/home3.png"),
+      //     title: "电脑，监控，网络工程，机房，线上线下电子产品销售",
+      //     desc: "高价值的解决方案",
+      //     edes: "THE HIGH-VALUE SOLUTIONS",
+      //   },
+      //   {
+      //     src: require("@s/images/home/home4.png"),
+      //     title: "电脑，监控，网络工程，机房，线上线下电子产品销售",
+      //     desc: "值得信赖的选择",
+      //     edes: "A TRUSTWORTHY CHOICE",
+      //   },
+      // ],
       productList: [
         {
-          title: '笔记本',
-          desc: '各品牌笔记本电脑',
-          src: require('@s/images/home/mac.png'),
+          title: "笔记本",
+          desc: "各品牌笔记本电脑",
+          src: require("@s/images/home/mac.png"),
         },
         {
-          title: '台式机',
-          desc: '各品牌台式电脑',
-          src: require('@s/images/home/pc.png'),
+          title: "台式机",
+          desc: "各品牌台式电脑",
+          src: require("@s/images/home/pc.png"),
         },
         {
-          title: 'iPad',
-          desc: '各品牌平板电脑',
-          src: require('@s/images/home/ipad.png'),
+          title: "iPad",
+          desc: "各品牌平板电脑",
+          src: require("@s/images/home/ipad.png"),
         },
         {
-          title: '监控设备',
-          desc: '高清数字监控设备',
-          src: require('@s/images/home/monitoring.png'),
+          title: "监控设备",
+          desc: "高清数字监控设备",
+          src: require("@s/images/home/monitoring.png"),
         },
         {
-          title: '充电器',
-          desc: '电脑配件',
-          src: require('@s/images/home/pc_charger.png'),
+          title: "充电器",
+          desc: "电脑配件",
+          src: require("@s/images/home/pc_charger.png"),
         },
         {
-          title: '显卡',
-          desc: '电脑配件',
-          src: require('@s/images/home/graphics_card.png'),
+          title: "显卡",
+          desc: "电脑配件",
+          src: require("@s/images/home/graphics_card.png"),
         },
         {
-          title: '电源',
-          desc: '电脑配件',
-          src: require('@s/images/home/power.png'),
+          title: "电源",
+          desc: "电脑配件",
+          src: require("@s/images/home/power.png"),
         },
         {
-          title: '手机配件',
-          desc: '各品牌手机数据线',
-          src: require('@s/images/home/cable.png'),
+          title: "手机配件",
+          desc: "各品牌手机数据线",
+          src: require("@s/images/home/cable.png"),
         },
       ],
       plans: {
         prev: [
           {
-            icon: 'icon-ziyuan',
-            desc: '需求对接',
+            icon: "icon-ziyuan",
+            desc: "需求对接",
           },
-          { arrow: 'icon-jiantou1', deg: 0 },
+          { arrow: "icon-jiantou1", deg: 0 },
           {
-            icon: 'icon-fenxi',
-            desc: '需求分析',
+            icon: "icon-fenxi",
+            desc: "需求分析",
           },
-          { arrow: 'icon-jiantou1', deg: 0 },
+          { arrow: "icon-jiantou1", deg: 0 },
           {
-            icon: 'icon-fangan3',
-            desc: '制定方案',
+            icon: "icon-fangan3",
+            desc: "制定方案",
           },
         ],
         next: [
           {
-            icon: 'icon-weihu1',
-            desc: '后期维护',
+            icon: "icon-weihu1",
+            desc: "后期维护",
           },
-          { arrow: 'icon-jiantou1', deg: 180 },
+          { arrow: "icon-jiantou1", deg: 180 },
           {
-            icon: 'icon-yanshou3',
-            desc: '交付验收',
+            icon: "icon-yanshou3",
+            desc: "交付验收",
           },
-          { arrow: 'icon-jiantou1', deg: 180 },
+          { arrow: "icon-jiantou1", deg: 180 },
           {
-            icon: 'icon-shishi',
-            desc: '工程实施',
+            icon: "icon-shishi",
+            desc: "工程实施",
           },
-          { arrow: 'icon-jiantou1', deg: 180 },
+          { arrow: "icon-jiantou1", deg: 180 },
           {
-            icon: 'icon-jiaofu1',
-            desc: '方案交付',
+            icon: "icon-jiaofu1",
+            desc: "方案交付",
           },
         ],
       },
       serviceList: [
         {
-          title: '时间的沉淀',
-          desc: '历经时间风雨，留下了真诚',
-          color: '#409EFF',
+          title: "时间的沉淀",
+          desc: "历经时间风雨，留下了真诚",
+          color: "#409EFF",
         },
-        { title: '靠谱的品质', desc: '优质货源，精致商品', color: '#E6A23C' },
+        { title: "靠谱的品质", desc: "优质货源，精致商品", color: "#E6A23C" },
         {
-          title: '诱人的性价比',
-          desc: '不选最贵，只选最适合',
-          color: '#F56C6C',
+          title: "诱人的性价比",
+          desc: "不选最贵，只选最适合",
+          color: "#F56C6C",
         },
         {
-          title: '优质的服务',
-          desc: '尽最大努力，给每一位用户最优质的服务',
-          color: '#67C23A',
+          title: "优质的服务",
+          desc: "尽最大努力，给每一位用户最优质的服务",
+          color: "#67C23A",
         },
       ],
-      companyImage: require('@s/images/home/company.png'),
-    }
-  },
-  components: {
-    Swiper,
+      companyImage: require("@s/images/home/company.png"),
+    };
   },
   methods: {
     _handleViewAbout() {
-      this.$router.push('/about')
+      this.$router.push("/about");
     },
     _handleViewSolution() {
-      this.$router.push('/solution')
+      this.$router.push("/solution");
     },
   },
-}
+};
 </script>
 <style lang="scss" scoped>
 .oksm-home--page {
@@ -275,7 +270,8 @@ export default {
   }
 
   .plate-section {
-    padding: 120px 24px;
+    padding-top: 120px;
+    padding-bottom: 120px;
 
     .title {
       font-size: 40px;
@@ -288,35 +284,94 @@ export default {
     }
   }
 
-  .caousel-area {
+  .banner-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    height: 578px;
+    background: url("~@s/images/home/banner_bg.png") no-repeat center center;
+    background-size: cover;
 
-    .swiper-slider {
+    .banner-inner {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      align-content: center;
+      transform: translateY(25px);
 
-      .content-center {
-        width: 100%;
-        color: #fff;
-        text-align: center;
+      .slogan {
+        width: 441px;
 
-        h4.title-ch {
-          width: 100%;
-          font-size: 5vw;
+        .title {
+          font-size: 50px;
+          font-family: PingFangSC-Semibold, PingFang SC;
+          font-weight: 600;
+          color: #fff;
+          line-height: 70px;
+          letter-spacing: 3px;
+          white-space: nowrap;
+          text-shadow: 0 2px 4px #e26400;
         }
 
-        p.title-es {
-          width: 100%;
-          font-size: 3vw;
+        .desc {
+          margin-top: 24px;
+          font-size: 18px;
+          font-family: PingFangSC-Medium,PingFang SC;
+          font-weight: 500;
+          color: #fff;
+          line-height: 32px;
+          letter-spacing: 3px;
+          text-shadow: 0 2px 4px #e96700;
+        }
+      }
+
+      .image-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 600px;
+        
+
+        .decoration {
+          width: 180px;
+          height: 342px;
+
+          li.decor1 {
+            margin-top: 60px;
+            margin-left: 80px;
+            width: 60px;
+            height: 60px;
+            background-color: #fc9e35;
+            border-radius: 10px
+          }
+
+           li.decor2 {
+            margin-top: 80px;
+            margin-left: 20px;
+            width: 90px;
+            height: 90px;
+            background-color: #fcb067;
+            border-radius: 16px
+          }
+        }
+
+        .logo {
+          background-color: #FFF;
+          border-radius: 30px;
+          box-shadow: 0 2px 10px rgba(252, 158, 53, .5);
+
+          img {
+            padding: 70px 90px;
+            width:  420px;
+          }
         }
       }
     }
   }
 
   .company-part {
-    padding: 48px 24px;
+    padding-top: 48px;
+    padding-bottom: 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -349,7 +404,7 @@ export default {
         left: -75%;
         z-index: 2;
         display: block;
-        content: '';
+        content: "";
         width: 50%;
         height: 100%;
         background: -webkit-linear-gradient(
@@ -426,10 +481,8 @@ export default {
             position: absolute;
             left: 50%;
             top: 50%;
-            // top: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
-            // height: 100%;
           }
         }
 

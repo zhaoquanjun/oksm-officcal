@@ -149,7 +149,7 @@ export default {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    padding: 48px 0;
+    padding: 48px;
 
     .contact-ways {
       padding-right: 80px;
