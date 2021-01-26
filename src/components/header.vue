@@ -8,7 +8,7 @@
       <ul class="nav-wrapper">
         <li
           class="nav-item"
-          :class="{ active: currentPath == item.path }"
+          :class="{ active: currentChildPath == item.path || currentPath == item.path }"
           v-for="(item, index) in navs"
           :key="index"
           @click="_handleSkipOtherPage(item)"
@@ -34,12 +34,12 @@ export default {
           value: 4,
           path: "/solution",
         },
-        //  {
-        //   chinese: "招贤纳士",
-        //   english: "recruiting",
-        //   value: 4,
-        //   path: "/recruiting",
-        // },
+         {
+          chinese: "招贤纳士",
+          english: "recruiting",
+          value: 4,
+          path: "/recruiting",
+        },
       ],
       logo: require("@s/images/logo.png"),
       activeLogo: require("@s/images/logo_active.png"),
@@ -53,6 +53,10 @@ export default {
     currentPath() {
       return this.$route.path;
     },
+    currentChildPath() {
+      console.log(this.$route.meta && this.$route.meta.parent, 9999)
+      return this.$route.meta && this.$route.meta.parent
+    }
   },
   methods: {
     _handleSkipOtherPage(item) {
@@ -101,7 +105,7 @@ export default {
       align-items: center;
 
       .nav-item {
-        margin-left: 32px;
+        margin-left: 36px;
         line-height: 22px;
         cursor: pointer;
         color: #fff;
@@ -109,20 +113,17 @@ export default {
         font-family: PingFangSC-Regular, PingFang SC;
         font-weight: 400;
         letter-spacing: 1px;
+        transition: all .15s ease-in-out;
 
         &:hover {
-          // color: #ff6a00;
-          // font-weight: bold;
-          transform: translate3d(0, 0, 10px);
-          text-shadow: 2px 2px 5px #fff;
+          transform: translate3d(0, 0, 10px) scale(1.3);
         }
       }
 
       .active {
-        // color: #ff6a00;
-        // font-weight: bold;
-        transform: translate3d(0, 0, 10px);
-        text-shadow: 2px 2px 5px #fff;
+        font-weight: bold;
+        transform: translate3d(0, 0, 10px) scale(1.3);
+
       }
     }
   }

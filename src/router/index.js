@@ -5,6 +5,8 @@ import Home from '@v/home'
 import About from '@v/about'
 import Contact from '@v/contact'
 import Solution from '@v/solution'
+import Recruiting from '@v/recruiting'
+import Detail from '@v/detail'
 
 // animate
 import animate from '@u/animate'
@@ -40,7 +42,15 @@ const routes = [
   {
     path: '/recruiting',
     name: 'recruiting',
-    component: Solution,
+    component: Recruiting,
+  },
+  {
+    path: '/detail',
+    name: 'detail',
+    meta: {
+      parent: '/recruiting'
+    },
+    component: Detail,
   }
 ]
 
