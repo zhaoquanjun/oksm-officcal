@@ -11,6 +11,10 @@
             backgroundSize: 'cover',
           }"
         >
+          <div class="inner">
+            <h4 class="t ale" data-animate="s-t">{{ item.desc }}</h4>
+            <p class="d ale" data-animate="s-b">{{ item.edes }}</p>
+          </div>
         </div>
       </swiper>
     </div>
@@ -109,24 +113,32 @@ export default {
       code: require('@s/images/about/qrcode.png'),
       carousels: [
         {
-          src: require('@s/images/about/about1.png'),
+          src: require('@s/images/about/about_bg.jpg'),
           title:
             '电脑销售，监控安防，电信服务，网络安装，软硬件维修，数据处理，线上线下电子产品销售',
+          desc: '尽心尽力的服务',
+          edes: 'THE DEDICATED SERVICE',
         },
         {
-          src: require('@s/images/about/about2.png'),
+          src: require('@s/images/about/about_bg.jpg'),
           title:
             '电脑销售，监控安防，电信服务，网络安装，软硬件维修，数据处理，线上线下电子产品销售',
+          desc: '优秀靠谱的品质',
+          edes: 'THE EXCELLENT QUALITY',
         },
         {
-          src: require('@s/images/about/about3.png'),
+          src: require('@s/images/about/about_bg.jpg'),
           title:
             '电脑销售，监控安防，电信服务，网络安装，软硬件维修，数据处理，线上线下电子产品销售',
+          desc: '高价值的解决方案',
+          edes: 'THE HIGH-VALUE SOLUTIONS',
         },
         {
-          src: require('@s/images/about/about4.png'),
+          src: require('@s/images/about/about_bg.jpg'),
           title:
             '电脑销售，监控安防，电信服务，网络安装，软硬件维修，数据处理，线上线下电子产品销售',
+          desc: '值得信赖的选择',
+          edes: 'A TRUSTWORTHY CHOICE',
         },
       ],
       storeList: [
@@ -190,6 +202,41 @@ export default {
 
   .caousel-area {
     width: 100%;
+    height: 500px;
+
+    .swiper-slider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      height: 500px;
+
+      .inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .t {
+          width: 100%;
+          font-size: 48px;
+          line-height: 40px;
+          color: #fff;
+          font-weight: 500;
+          text-align: center;
+        }
+
+        .d {
+          padding-top: 24px;
+          width: 100%;
+          font-size: 32px;
+          line-height: 32px;
+          color: #fff;
+          font-weight: 500;
+          text-align: center;
+        }
+      }
+    }
   }
 
   .introduce-part {

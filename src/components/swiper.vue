@@ -318,7 +318,6 @@ export default {
     .swiper-slider {
       float: left;
       width: 100%;
-      height: 650px !important;
     }
   }
 
