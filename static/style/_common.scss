@@ -64,7 +64,7 @@ body{ -ms-overflow-style: none; }
 body
 
 *, *::before, *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 img,
@@ -93,8 +93,12 @@ th:not([align]) {
 }
 
 // 全局类名
-.min-width {
-  min-width: 1024px;
+.min-width{
+  min-width: 1200px;
+
+  @media screen and (max-width: 1024) {
+    min-width: auto !important;
+  }
 }
 
 .content-area {
@@ -106,6 +110,12 @@ th:not([align]) {
 
   @media screen and (min-width: 1260px) {
     width: 1260px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    padding: 0 16px;
+    min-width: auto !important;
+    max-width: 1024px !important;
   }
 }
 

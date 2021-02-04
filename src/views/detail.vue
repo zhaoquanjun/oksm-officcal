@@ -19,9 +19,21 @@
       <div class="content-inner content-area">
         <h3 class="content-title">职位描述</h3>
         <p class="tit">岗位要求：</p>
-        <p class="text" v-for="(item, index ) in jobs.specification" :key="index + Math.random()">{{ item }}；</p>
+        <p
+          class="text"
+          v-for="(item, index) in jobs.specification"
+          :key="index + Math.random()"
+        >
+          {{ item }}；
+        </p>
         <p class="tit">岗位职责：</p>
-        <p class="text" v-for="(item, index ) in jobs.responsibilities" :key="index + Math.random()">{{ item }}；</p>
+        <p
+          class="text"
+          v-for="(item, index) in jobs.responsibilities"
+          :key="index + Math.random()"
+        >
+          {{ item }}；
+        </p>
       </div>
     </div>
   </div>
@@ -126,11 +138,75 @@ export default {
       background: url('~@s/images/recruiting/line-sec.png') 0 45px no-repeat;
     }
 
-    .tit, .text {
+    .tit,
+    .text {
       color: #61687c;
       font-size: 14px;
       text-align: left;
       line-height: 36px;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .recruiting-page {
+    .banner-area {
+      padding: 0.24rem 0 0.16rem;
+
+      .banner-content {
+        .status {
+          margin-top: 0.48rem;
+          font-size: 0.14rem;
+          line-height: 0.2rem;
+        }
+
+        .job {
+          font-size: 0.2rem;
+          line-height: 0.3rem;
+
+          .salary-range {
+            padding-left: 0.16rem;
+            font-size: 0.18rem;
+            line-height: 0.28rem;
+          }
+        }
+
+        .desc {
+          margin-bottom: 0.2rem;
+          font-size: 0.14rem;
+          line-height: 0.21rem;
+        }
+
+        .welfare-list {
+          padding-top: 0;
+          flex-wrap: wrap;
+
+          .item {
+            padding: 0.04rem 0.08rem;
+            height: auto;
+            font-size: 0.12rem;
+            line-height: 0.17rem;
+          }
+        }
+      }
+    }
+
+    .content-wrapper {
+      padding: 0.48rem 0 0.36rem;
+
+      .content-inner {
+        .content-title {
+          padding-bottom: 0.08rem;
+          font-size: 0.16rem;
+          line-height: 0.46rem;
+          background: url('~@s/images/recruiting/line-sec.png')0 .4rem no-repeat;
+        }
+
+        .tit, .text {
+          font-size: .14rem;
+          line-height: .36rem;
+        }
+      }
     }
   }
 }

@@ -1,11 +1,14 @@
 <template>
-  <div class="oksm-home--page min-width">
+  <div class="oksm-home--page">
     <div class="banner-area">
       <div class="banner-inner content-area">
         <div class="slogan ale" data-animate="s-t">
           <h5 class="title">OUKEWL</h5>
-          <p class="desc">
-            集电脑销售、监控安防、电信服务、</br>网络安装、软硬件维修、数据处理等一体化服务
+          <p class="desc" v-if="equ == 'pc'">
+            集电脑销售、监控安防、电信服务、<br />网络安装、软硬件维修、数据处理等一体化服务
+          </p>
+          <p class="desc" v-if="equ == 'mobile'">
+            电脑、监控、电信、网络、软硬件维修、数据处理等一体化服务
           </p>
         </div>
         <div class="image-area ale" data-animate="s-b">
@@ -13,7 +16,9 @@
             <li class="decor1"></li>
             <li class="decor2"></li>
           </ul>
-          <div class="logo"><img src="@s/images/home/banner_logo.png" alt="" /></div>
+          <div class="logo">
+            <img src="@s/images/home/banner_logo.png" alt="" />
+          </div>
         </div>
       </div>
     </div>
@@ -60,7 +65,9 @@
     <div class="resolve-part plate-section content-area">
       <p class="title">
         解决方案
-        <span class="read-more" @click="_handleViewSolution">READ MORE --</span>
+        <span class="read-more" @click="_handleViewSolution" v-if="equ == 'pc'"
+          >READ MORE --</span
+        >
       </p>
       <p class="sub-title">
         立足于每一位客户需求点，规范的流程，最短时间产出最优方案
@@ -120,146 +127,125 @@
   </div>
 </template>
 <script>
+import utils from '@u/utils'
 export default {
   data() {
     return {
-      // carousels: [
-      //   {
-      //     src: require("@s/images/home/home1.png"),
-      //     title: "电脑，监控，网络工程，机房，线上线下电子产品销售",
-      //     desc: "尽心尽力的服务",
-      //     edes: "THE DEDICATED SERVICE",
-      //   },
-      //   {
-      //     src: require("@s/images/home/home2.png"),
-      //     title: "电脑，监控，网络工程，机房，线上线下电子产品销售",
-      //     desc: "优秀靠谱的品质",
-      //     edes: "THE EXCELLENT QUALITY",
-      //   },
-      //   {
-      //     src: require("@s/images/home/home3.png"),
-      //     title: "电脑，监控，网络工程，机房，线上线下电子产品销售",
-      //     desc: "高价值的解决方案",
-      //     edes: "THE HIGH-VALUE SOLUTIONS",
-      //   },
-      //   {
-      //     src: require("@s/images/home/home4.png"),
-      //     title: "电脑，监控，网络工程，机房，线上线下电子产品销售",
-      //     desc: "值得信赖的选择",
-      //     edes: "A TRUSTWORTHY CHOICE",
-      //   },
-      // ],
       productList: [
         {
-          title: "笔记本",
-          desc: "各品牌笔记本电脑",
-          src: require("@s/images/home/mac.png"),
+          title: '笔记本',
+          desc: '各品牌笔记本电脑',
+          src: require('@s/images/home/mac.png'),
         },
         {
-          title: "台式机",
-          desc: "各品牌台式电脑",
-          src: require("@s/images/home/pc.png"),
+          title: '台式机',
+          desc: '各品牌台式电脑',
+          src: require('@s/images/home/pc.png'),
         },
         {
-          title: "iPad",
-          desc: "各品牌平板电脑",
-          src: require("@s/images/home/ipad.png"),
+          title: 'iPad',
+          desc: '各品牌平板电脑',
+          src: require('@s/images/home/ipad.png'),
         },
         {
-          title: "监控设备",
-          desc: "高清数字监控设备",
-          src: require("@s/images/home/monitoring.png"),
+          title: '监控设备',
+          desc: '高清数字监控设备',
+          src: require('@s/images/home/monitoring.png'),
         },
         {
-          title: "充电器",
-          desc: "电脑配件",
-          src: require("@s/images/home/pc_charger.png"),
+          title: '充电器',
+          desc: '电脑配件',
+          src: require('@s/images/home/pc_charger.png'),
         },
         {
-          title: "显卡",
-          desc: "电脑配件",
-          src: require("@s/images/home/graphics_card.png"),
+          title: '显卡',
+          desc: '电脑配件',
+          src: require('@s/images/home/graphics_card.png'),
         },
         {
-          title: "电源",
-          desc: "电脑配件",
-          src: require("@s/images/home/power.png"),
+          title: '电源',
+          desc: '电脑配件',
+          src: require('@s/images/home/power.png'),
         },
         {
-          title: "手机配件",
-          desc: "各品牌手机数据线",
-          src: require("@s/images/home/cable.png"),
+          title: '手机配件',
+          desc: '各品牌手机数据线',
+          src: require('@s/images/home/cable.png'),
         },
       ],
       plans: {
         prev: [
           {
-            icon: "icon-ziyuan",
-            desc: "需求对接",
+            icon: 'icon-ziyuan',
+            desc: '需求对接',
           },
-          { arrow: "icon-jiantou1", deg: 0 },
+          { arrow: 'icon-jiantou1', deg: 0 },
           {
-            icon: "icon-fenxi",
-            desc: "需求分析",
+            icon: 'icon-fenxi',
+            desc: '需求分析',
           },
-          { arrow: "icon-jiantou1", deg: 0 },
+          { arrow: 'icon-jiantou1', deg: 0 },
           {
-            icon: "icon-fangan3",
-            desc: "制定方案",
+            icon: 'icon-fangan3',
+            desc: '制定方案',
           },
         ],
         next: [
           {
-            icon: "icon-weihu1",
-            desc: "后期维护",
+            icon: 'icon-weihu1',
+            desc: '后期维护',
           },
-          { arrow: "icon-jiantou1", deg: 180 },
+          { arrow: 'icon-jiantou1', deg: 180 },
           {
-            icon: "icon-yanshou3",
-            desc: "交付验收",
+            icon: 'icon-yanshou3',
+            desc: '交付验收',
           },
-          { arrow: "icon-jiantou1", deg: 180 },
+          { arrow: 'icon-jiantou1', deg: 180 },
           {
-            icon: "icon-shishi",
-            desc: "工程实施",
+            icon: 'icon-shishi',
+            desc: '工程实施',
           },
-          { arrow: "icon-jiantou1", deg: 180 },
+          { arrow: 'icon-jiantou1', deg: 180 },
           {
-            icon: "icon-jiaofu1",
-            desc: "方案交付",
+            icon: 'icon-jiaofu1',
+            desc: '方案交付',
           },
         ],
       },
       serviceList: [
         {
-          title: "时间的沉淀",
-          desc: "历经时间风雨，留下了真诚",
-          color: "#409EFF",
+          title: '时间的沉淀',
+          desc: '历经风雨，留下真诚',
+          color: '#409EFF',
         },
-        { title: "靠谱的品质", desc: "优质货源，精致商品", color: "#E6A23C" },
+        { title: '靠谱的品质', desc: '优质货源，精致商品', color: '#E6A23C' },
         {
-          title: "诱人的性价比",
-          desc: "不选最贵，只选最适合",
-          color: "#F56C6C",
+          title: '诱人的性价比',
+          desc: '量身打造般的选择',
+          color: '#F56C6C',
         },
         {
-          title: "优质的服务",
-          desc: "尽最大努力，给每一位用户最优质的服务",
-          color: "#67C23A",
+          title: '优质的服务',
+          desc: '给予最周到的服务',
+          color: '#67C23A',
         },
       ],
-      companyImage: require("@s/images/home/company.png"),
-    };
+      companyImage: require('@s/images/home/company.png'),
+      equ: 'pc'
+    }
+  },
+  created() {
+    this.equ = utils.getCurrentEquType()
   },
   methods: {
     _handleViewAbout() {
-      this.$router.push("/about");
+      this.$router.push('/about')
     },
     _handleViewSolution() {
-      this.$router.push("/solution");
+      this.$router.push('/solution')
     },
   },
-};
+}
 </script>
 <style lang="scss" scoped>
 .oksm-home--page {
@@ -290,7 +276,7 @@ export default {
     align-items: center;
     width: 100%;
     height: 578px;
-    background: url("~@s/images/home/banner_bg.png") no-repeat center center;
+    background: url('~@s/images/home/banner_bg.png') no-repeat center center;
     background-size: cover;
 
     .banner-inner {
@@ -316,7 +302,7 @@ export default {
         .desc {
           margin-top: 24px;
           font-size: 18px;
-          font-family: PingFangSC-Medium,PingFang SC;
+          font-family: PingFangSC-Medium, PingFang SC;
           font-weight: 500;
           color: #fff;
           line-height: 32px;
@@ -330,7 +316,6 @@ export default {
         justify-content: center;
         align-items: center;
         width: 600px;
-        
 
         .decoration {
           width: 180px;
@@ -342,27 +327,27 @@ export default {
             width: 60px;
             height: 60px;
             background-color: #fc9e35;
-            border-radius: 10px
+            border-radius: 10px;
           }
 
-           li.decor2 {
+          li.decor2 {
             margin-top: 80px;
             margin-left: 20px;
             width: 90px;
             height: 90px;
             background-color: #fcb067;
-            border-radius: 16px
+            border-radius: 16px;
           }
         }
 
         .logo {
-          background-color: #FFF;
+          background-color: #fff;
           border-radius: 30px;
-          box-shadow: 0 2px 10px rgba(252, 158, 53, .5);
+          box-shadow: 0 2px 10px rgba(252, 158, 53, 0.5);
 
           img {
             padding: 70px 90px;
-            width:  420px;
+            width: 420px;
           }
         }
       }
@@ -387,6 +372,9 @@ export default {
 
       .btn {
         margin-top: 32px;
+        padding: 8px 12px;
+        width: 100%;
+        text-align: center;
       }
     }
 
@@ -404,7 +392,7 @@ export default {
         left: -75%;
         z-index: 2;
         display: block;
-        content: "";
+        content: '';
         width: 50%;
         height: 100%;
         background: -webkit-linear-gradient(
@@ -670,6 +658,248 @@ export default {
         .des {
           padding-top: 14px;
           color: #eee;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .oksm-home--page {
+    .banner-area {
+      height: 2.5rem;
+
+      .banner-inner {
+        width: 100%;
+
+        .slogan {
+          margin-top: -0.1rem;
+          margin-right: 0.12rem;
+          max-width: 1.6rem;
+
+          .title {
+            font-size: 0.2rem;
+            line-height: 0.32rem;
+          }
+
+          .desc {
+            margin-top: 0;
+            font-size: 0.1rem;
+            line-height: 0.17rem;
+          }
+        }
+
+        .image-area {
+          width: 1.7rem;
+
+          .decoration {
+            width: 0.4rem;
+            height: 1rem;
+
+            li.decor1 {
+              margin-top: 0.1rem;
+              margin-left: 0.08rem;
+              width: 0.2rem;
+              height: 0.2rem;
+              border-radius: 0.04rem;
+            }
+
+            li.decor2 {
+              margin-top: 0.3rem;
+              margin-left: 0;
+              width: 0.3rem;
+              height: 0.3rem;
+              border-radius: 0.06rem;
+            }
+          }
+
+          .logo {
+            border-radius: 0.12rem;
+
+            img {
+              padding: 0.1rem 0.16rem;
+              width: 1.3rem;
+            }
+          }
+        }
+      }
+    }
+
+    .company-part {
+      flex-wrap: wrap;
+      .image-part {
+        width: 100%;
+      }
+
+      .desc-part {
+        margin-top: 0.1rem;
+        padding: 0;
+        width: 100%;
+
+        .title {
+          font-size: 0.2rem;
+          line-height: .32rem;
+        }
+
+        .sub-title {
+          margin: 0;
+          font-size: .14rem;
+          line-height: .21rem;
+        }
+
+        .desc {
+          margin-top: 0.08rem;
+          font-size: .1rem;
+          line-height: .21rem;
+        }
+
+        .btn {
+          margin-top: 0.2rem;
+          font-size: .12rem;
+          border-radius: .02rem;
+        }
+      }
+    }
+
+    .full-screen {
+      .goods-part {
+        padding-top: 0.48rem;
+        padding-bottom: 0.36rem;
+
+        .title {
+          font-size: 0.3rem;
+          line-height: 0.36rem;
+        }
+
+        .desc {
+          margin-top: 0.08rem;
+          font-size: .14rem;
+          line-height: .21rem;
+        }
+
+        .product-list {
+          margin-top: 0.36rem;
+
+          li {
+            margin-bottom: 0.08rem;
+            margin-left: 3%;
+            width: 48%;
+
+            .image-wrapper {
+              min-height: 1.2rem;
+            }
+
+            .words-part {
+              padding-top: 0.08rem;
+
+              .product-title {
+                font-size: .14rem;
+                line-height: .3rem;
+              }
+
+              .product-desc {
+                font-size: .12rem;
+                line-height: .21rem;
+              }
+            }
+          }
+
+          li:nth-child(2n + 1) {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+
+    .resolve-part {
+      padding-top: 0.48rem;
+      padding-bottom: 0.36rem;
+
+      .title {
+        font-size: 0.3rem;
+        line-height: 0.36rem;
+      }
+
+      .sub-title {
+        margin: 0 auto;
+        width: 85%;
+        font-size: 0.14rem;
+        line-height: 0.21rem;
+        text-align: center;
+      }
+
+      .plan-wrapper {
+        margin-top: 0.36rem;
+        width: 100%;
+
+        li {
+          .plan-item {
+            i {
+              width: 32px;
+              height: 32px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 0.12rem;
+              font-size: 0.24rem;
+              box-sizing: content-box;
+            }
+
+            p.desc {
+              margin-top: .08rem;
+              font-size: .12rem;
+            }
+          }
+
+          i.arrow {
+            margin-top: -.3rem;
+            font-size: .2rem;
+          }
+        }
+
+        li.bridge {
+          right: .28rem;
+        }
+      }
+    }
+
+    .full-screen {
+      .service-area {
+        padding-top: .48rem;
+        padding-bottom: .36rem;
+
+        .title {
+          font-size: .3rem;
+          line-height: .36rem;
+        }
+
+        .desc {
+          margin-top: .08rem;
+          font-size: .14rem;
+          line-height: .21rem;
+        }
+
+        .service-list {
+          justify-content: space-between;
+          flex-wrap: wrap;
+          margin-top: .36rem;
+
+          .list-item {
+            margin-bottom: .2rem;
+            width: 40vw;
+            height: 40vw;
+            max-width: 200px;
+            max-height: 200px;
+
+            .tit {
+              font-size: .16rem;
+            }
+
+            .des {
+              font-size: .12rem;
+              line-height: .21rem;
+            }
+          }
         }
       }
     }

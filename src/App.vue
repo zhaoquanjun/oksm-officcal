@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app min-width">
     <header-area></header-area>
     <router-view></router-view>
     <footer-area></footer-area>

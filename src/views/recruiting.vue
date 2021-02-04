@@ -174,4 +174,62 @@ export default {
     }
   }
 }
+
+@media screen and(max-width: 1024px) {
+  .recruiting-page {
+    .banner-area {
+      height: 2.5rem;
+    }
+
+    .content-wrapper {
+      padding: .48rem 0 .36rem;
+
+      .title {
+        font-size: .24rem;
+        line-height: .3rem;
+      }
+
+      .list {
+        margin-top: 0;
+        padding-left: .2rem;
+        flex-wrap: wrap;
+
+        .item {
+          margin-top: .48rem;
+          padding: .46rem .2rem .24rem;
+          width: 100%;
+
+          .name {
+            font-size: .18rem;
+            line-height: .21rem;
+          }
+
+          .detail {
+            font-size: .12rem;
+            line-height: .17rem;
+            color: #666;
+          }
+
+          .prefix {
+            top: -.12rem;
+            left: -.2rem;
+
+            .main {
+              width: 1rem;
+              height: .36rem;
+              font-size: .14rem;
+              line-height: .36rem;
+            }
+
+            .sub {
+              border-left-width: .15rem;
+              border-right-width: .15rem;
+              border-bottom-width: .15rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 </style>

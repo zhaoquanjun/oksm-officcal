@@ -5,7 +5,10 @@
         <img :src="logo" alt="" v-show="!hasScrollOverCarousel">
         <img :src="activeLogo" alt="" v-show="hasScrollOverCarousel">
       </div>
-      <ul class="nav-wrapper">
+      <div class="nav-icon" :class="activeNav ? 'active-icon' : ''" v-if="equ == 'mobile'" @click="_handleChangeNavvStatus">
+        <i class="iconfont icon-shousuo"></i>  
+      </div> 
+      <ul class="nav-wrapper" :class="activeNav ? 'active-nav' : ''">
         <li
           class="nav-item"
           :class="{ active: currentChildPath == item.path || currentPath == item.path }"
@@ -44,9 +47,12 @@ export default {
       logo: require("@s/images/logo.png"),
       activeLogo: require("@s/images/logo_active.png"),
       hasScrollOverCarousel: false,
+      activeNav: false,
+      equ: 'pc'
     };
   },
   created() {
+    this.equ = localStorage.getItem('equ') || 'pc'
     this.addDocumentEvent();
   },
   computed: {
@@ -54,7 +60,6 @@ export default {
       return this.$route.path;
     },
     currentChildPath() {
-      console.log(this.$route.meta && this.$route.meta.parent, 9999)
       return this.$route.meta && this.$route.meta.parent
     }
   },
@@ -64,6 +69,7 @@ export default {
       this.$router.push({
         path: item.path,
       });
+      if (this.equ == 'mobile') this.activeNav = false
     },
     addDocumentEvent() {
       document.addEventListener("scroll", (e) => {
@@ -73,6 +79,9 @@ export default {
         this.hasScrollOverCarousel = scrollTop > 0 ? true : false;
       });
     },
+    _handleChangeNavvStatus() {
+      this.activeNav = !this.activeNav
+    }
   },
 };
 </script>
@@ -147,6 +156,88 @@ export default {
         color: #ff6a00;
       }
     }
+
+    .nav-icon {
+      i.iconfont {
+        color: #ff6a00 !important;
+      }
+    }
+  }
+}
+
+// mobile media
+@media screen and (max-width: 1024px) {
+  .oksm-header--section {
+    height: .6rem;
+    z-index: 1111;
+
+    .header-wrapper {
+      width: 100%;
+      .nav-wrapper {
+        position: fixed;
+        top: 0;
+        right: 0;
+        transform: translate(200%, -100%);
+        display: block;
+        padding: .6rem .16rem .2rem;
+        width: 100%;
+        height: 100%;
+        transition: all .2s ease-in-out;
+        opacity: 0;
+        z-index: 11;
+        background: #fff;
+        box-shadow: 0 .08rem .16rem 0 rgba(223, 223, 223, 0.24);
+
+        .nav-item {
+          margin-left: 0;
+          padding: .16rem 0;
+          font-size: .18rem;
+          color: #333;
+          width: 100%;
+          border-bottom: .01rem solid #f5f5f5;
+
+          span {
+            margin: 0;
+          }
+
+          &:hover {
+            transform: none;
+          }
+        }
+
+        .active {
+          font-size: .2rem;
+          transform: none;
+        }
+      }
+
+      .nav-icon {
+        position: relative;
+        z-index: 21;
+        i.iconfont {
+          display: block;
+          color: #fff;
+          font-size: .28rem;
+          transition: all .2s ease-in-out;
+        }
+      }
+
+      .active-nav {
+        opacity: 1;
+        transform: translate(0, 0);
+
+        .nav-item.active {
+          color: #ff6a00;
+        }
+      }
+
+      .active-icon {
+        i.iconfont {
+          transform: rotate(-90deg);
+        }
+      }
+    }
+    
   }
 }
 </style>

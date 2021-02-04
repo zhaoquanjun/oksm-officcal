@@ -87,15 +87,18 @@
     <div class="code-area content-area">
       <div class="words">
         <h3 class="title">关注我们</h3>
-        <p class="tips">
-          为了能更及时的将我们的动态信息推送给您，您可以扫码关注我们的公众号；
-        </p>
-        <p class="tips">
-          我们将实时的在公众号推送我们的最新产品以及优惠活动；
-        </p>
-        <p class="tips">
-          感谢您的关注；
-        </p>
+        <template v-if="equ == 'pc'">
+          <p class="tips">
+            为了能更及时的将我们的动态信息推送给您，您可以扫码关注我们的公众号；
+          </p>
+          <p class="tips">
+            我们将实时的在公众号推送我们的最新产品以及优惠活动；
+          </p>
+          <p class="tips">
+            感谢您的关注；
+          </p>
+        </template>
+        <p class="tips" v-else>为了能更及时的将我们的动态信息推送给您，您可以扫码关注我们的公众号；我们将实时的在公众号推送我们的最新产品以及优惠活动；感谢您的关注；</p>
       </div>
       <div class="code">
         <img :src="code" alt="" />
@@ -188,7 +191,11 @@ export default {
           prevEl: '.swiper-button-prev',
         },
       },
+      equ: 'pc'
     }
+  },
+  created() {
+    this.equ = localStorage.getItem('equ') || 'pc'
   },
   components: {
     Swiper,
@@ -198,8 +205,6 @@ export default {
 
 <style lang="scss" scoped>
 .oksm-about--page {
-  min-width: 1024px;
-
   .caousel-area {
     width: 100%;
     height: 500px;
@@ -397,6 +402,7 @@ export default {
       .tips {
         text-align: center;
         line-height: 32px;
+        color: #888;
       }
     }
 
@@ -407,6 +413,115 @@ export default {
 
       img {
         width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 1024px) {
+  .oksm-about--page {
+    .caousel-area {
+      height: 2.5rem;
+
+      .swiper-slider {
+        height: 2.5rem;
+
+        .inner {
+          margin-top: 0.2rem;
+
+          .t {
+            font-size: 0.28rem;
+            line-height: 0.36rem;
+          }
+
+          .d {
+            padding-top: 0.1rem;
+            font-size: 0.2rem;
+            line-height: 0.3rem;
+          }
+        }
+      }
+    }
+
+    .introduce-part {
+      padding: 0.48rem 0.16rem 0.36rem;
+
+      .logo-area {
+        width: 2rem;
+      }
+
+      .produce-words {
+        padding-top: 0.16rem;
+        font-size: 0.12rem;
+        line-height: 0.3rem;
+        text-indent: 0.3rem;
+      }
+    }
+
+    .microcosm-area {
+      padding: 0 0.16rem 0.36rem;
+      .name-area {
+        padding: 0 0 0.16rem;
+
+        .tit {
+          font-size: 0.24rem;
+          line-height: 0.3rem;
+        }
+      }
+    }
+
+    .future-part {
+      padding: 0 0.16rem 0.36rem;
+      background: none;
+      height: auto;
+
+      .title {
+        padding: 0 0 0.08rem;
+        font-size: 0.24rem;
+        line-height: 0.3rem;
+        text-align: left;
+      }
+
+      .part1 {
+        .desc {
+          margin-top: 0;
+          margin-bottom: 0.08rem;
+          font-size: 0.1rem;
+          line-height: 0.21rem;
+          text-align: left;
+        }
+      }
+    }
+
+    .code-area {
+      flex-wrap: wrap;
+      padding: 0 0.16rem 0.36rem;
+      width: 100%;
+
+      .words,
+      .code {
+        padding: 0;
+        width: 100%;
+
+        .title {
+          padding-bottom: 0.08rem;
+          font-size: 0.24rem;
+          line-height: 0.3rem;
+          text-align: left;
+        }
+
+        p.tips {
+          font-size: 0.12rem;
+          line-height: 0.21rem;
+          text-align: left;
+        }
+      }
+
+      .code {
+        img {
+          padding: 0.08rem;
+          width: 100%;
+        }
       }
     }
   }

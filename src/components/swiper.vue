@@ -20,7 +20,7 @@
     </div>
     <div
       class="swiper-btn--prev"
-      v-if="swiperOptions.showBtn"
+      v-if="swiperOptions.showBtn && equ == 'pc'"
       :class="{ 'no-events': isMoving }"
       @click="_prev"
     >
@@ -28,7 +28,7 @@
     </div>
     <div
       class="swiper-btn--next"
-      v-if="swiperOptions.showBtn"
+      v-if="swiperOptions.showBtn && equ == 'pc'"
       :class="{ 'no-events': isMoving }"
       @click="_next"
     >
@@ -80,8 +80,12 @@ export default {
       nl: null, // nodelength 子元素掐头去尾的长度
       isMoving: false, // 是否在按压移动
       startX: 0, // 起始位置
-      disX: 0 // 移动距离
+      disX: 0, // 移动距离
+      equ: 'pc'
     };
+  },
+  created() {
+    this.equ = localStorage.getItem('equ') || 'pc'
   },
   mounted() {
     this.init();
@@ -305,8 +309,6 @@ export default {
 .swiper-wrapper {
   position: relative;
   width: 100%;
-  min-width: 1024px;
-  min-height: 400px;
   overflow: hidden;
   user-select: none;
 
@@ -377,6 +379,21 @@ export default {
 
   .no-events {
     pointer-events: none;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .swiper-wrapper {
+    .swiper-pagination {
+      bottom: .12rem;
+
+      .pagination {
+        li {
+          width: .08rem;
+          height: .08rem;
+        }
+      }
+    }
   }
 }
 </style>

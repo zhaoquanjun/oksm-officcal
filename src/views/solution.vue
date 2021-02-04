@@ -24,12 +24,12 @@
             您可以通过电话、微信、QQ等线上方式或者直接到我们营业点这两种方式与我们取得联系，描述您的需求，我们会在当下给出您解决方向，以确认是否进一步合作
           </p>
         </div>
-        <div class="image-area">
+        <div class="image-area" v-if="equ == 'pc'">
           <img src="@s/images/solution/step1.png" alt="" />
         </div>
       </li>
       <li class="step">
-        <div class="image-area">
+        <div class="image-area" v-if="equ == 'pc'">
           <img src="@s/images/solution/step2.png" alt="" />
         </div>
         <div class="words-area pdl">
@@ -48,12 +48,12 @@
             结合当下季节以及实际施工场地，综合考虑制定可行性方案；沟通预算成本，筛选最适合您的方案
           </p>
         </div>
-        <div class="image-area">
+        <div class="image-area" v-if="equ == 'pc'">
           <img src="@s/images/solution/step3.png" alt="" />
         </div>
       </li>
       <li class="step">
-        <div class="image-area">
+        <div class="image-area" v-if="equ == 'pc'">
           <img src="@s/images/solution/step4.png" alt="" />
         </div>
         <div class="words-area pdl">
@@ -72,12 +72,12 @@
             签订完成合同，施工队伍入场开始施工，在有效工期内完成施工任务
           </p>
         </div>
-        <div class="image-area">
+        <div class="image-area" v-if="equ == 'pc'">
           <img src="@s/images/solution/step5.png" alt="" />
         </div>
       </li>
       <li class="step">
-        <div class="image-area">
+        <div class="image-area" v-if="equ == 'pc'">
           <img src="@s/images/solution/step6.png" alt="" />
         </div>
         <div class="words-area pdl">
@@ -96,7 +96,7 @@
             在有效的合同期内，对于工程在保设施进行维护维修，保证稳定有效运行
           </p>
         </div>
-        <div class="image-area">
+        <div class="image-area" v-if="equ == 'pc'">
           <img src="@s/images/solution/step7.png" alt="" />
         </div>
       </li>
@@ -105,7 +105,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      equ: 'pc'
+    }
+  },
+  created() {
+    this.equ = localStorage.getItem('equ') || 'pc'
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -180,6 +189,57 @@ export default {};
 
       .pdr {
         padding-right: 56px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .solution-page {
+    .banner-area {
+      height: 2.5rem;
+    }
+
+    .title {
+      margin-top: .48rem;
+      font-size: .24rem;
+      line-height: .3rem;
+    }
+
+    .sub-title {
+      padding-top: 0.04rem;
+      font-size: .14rem;
+      line-height: .21rem;
+    }
+
+    .resolve-wrapper {
+      margin-top: .24rem;
+
+      li.step {
+        flex-wrap: wrap;
+        margin-bottom: .32rem;
+
+        .words-area {
+          padding: 0;
+          width: 100%;
+
+          .tit {
+            font-size: .18rem;
+            line-height: .28rem;
+          }
+
+          .sub-title {
+            padding-top: 0;
+            font-size: .14rem;
+            line-height: .21rem;
+          }
+
+          .desc {
+            margin-top: .08rem;
+            font-size: .12rem;
+            line-height: .21rem;
+          }
+        }
       }
     }
   }

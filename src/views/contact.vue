@@ -7,9 +7,13 @@
     </div>
     <div class="map-part content-area">
       <div class="contact-ways">
-        <p class="title">欧科网络科技有限公司</p>
-        <p class="desc">欧科网络科技有限公司是集电脑销售、监控安防、电信服务、网络安装、软硬件维修、数据处理的一体化公司...</p>
-        <p class="pad-t">地址：河北省张家口市张北县民政局南侧欧科网络科技有限公司</p>
+        <p class="title" v-if="equ == 'pc'">欧科网络科技有限公司</p>
+        <p class="desc">
+          欧科网络科技有限公司是集电脑销售、监控安防、电信服务、网络安装、软硬件维修、数据处理的一体化公司...
+        </p>
+        <p class="pad-t">
+          地址：河北省张家口市张北县民政局南侧欧科网络科技有限公司
+        </p>
         <p>QQ：113128998 | 155313275</p>
         <p>电话：13373133883</p>
         <p>邮箱：113128998@qq.com</p>
@@ -26,9 +30,11 @@ export default {
     return {
       map: null,
       doorPhoto: require('@s/images/about/store2.jpeg'),
+      equ: 'pc',
     }
   },
   created() {
+    this.equ = localStorage.getItem('equ') || 'pc'
     this._loadScript()
   },
   methods: {
@@ -50,14 +56,25 @@ export default {
      */
     _initMap() {
       const center = new TMap.LatLng(41.140625, 114.720032)
+      const params =
+        this.equ == 'pc'
+          ? {
+              center: center, //设置地图中心点坐标
+              zoom: 18, //设置地图缩放级别
+              viewMode: '2D', // 视角类型
+              pitch: 43.5, //设置俯仰角
+              rotation: 45, //设置地图旋转角度
+            }
+          : {
+              center: center, //设置地图中心点坐标
+              zoom: 14, //设置地图缩放级别
+              viewMode: '3D', // 视角类型
+              pitch: 43.5, //设置俯仰角
+              rotation: 45, //设置地图旋转角度
+            }
+      console.log(params, 222)
       //定义map变量，调用 TMap.Map() 构造函数创建地图
-      this.map = new TMap.Map(document.getElementById('map'), {
-        center: center, //设置地图中心点坐标
-        zoom: 18, //设置地图缩放级别
-        viewMode: '2D', // 视角类型
-        pitch: 43.5, //设置俯仰角
-        rotation: 45, //设置地图旋转角度
-      })
+      this.map = new TMap.Map(document.getElementById('map'), params)
       this._initlawyer()
     },
     /**
@@ -90,8 +107,15 @@ export default {
           },
         ],
       })
+      const control = map.getControl(TMap.constants.DEFAULT_CONTROL_ID.ZOOM)
+      const sizeControl = map.getControl(TMap.constants.DEFAULT_CONTROL_ID.SCALE)
+      this.setControlClassName(control, 'control')
+      this.setControlClassName(sizeControl, 'control')
       this._handSetLocationInfo()
       markerLayer.on('click', this._handleClickMarker)
+    },
+    setControlClassName(control, name) {
+      if (control) control.setClassName(name)
     },
     /**
      * @name 点击点标记事件
@@ -110,7 +134,13 @@ export default {
         map: map,
         position: infoWindowLocation,
         //设置infoWindow，content支持直接传入html代码，以实现各类内容格式需求
-        content: `<div style="width: 140px;"><img src='${this.doorPhoto}'><p>欧科网络科技有限公司</p></div>`,
+        content: `<div style="width: ${
+          this.equ == 'pc' ? '140px' : '1rem'
+        };"><img src='${
+          this.doorPhoto
+        }'><p style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap; font-size: 12px">${
+          this.equ == 'pc' ? '欧科网络科技有限公司' : '欧科网络'
+        }</p></div>`,
       })
     },
   },
@@ -123,7 +153,8 @@ export default {
     margin-bottom: 80px;
     height: 500px;
     width: 100%;
-    background: url('~@s/images/contact/contact_space.png') no-repeat center center;
+    background: url('~@s/images/contact/contact_space.png') no-repeat center
+      center;
     background-size: cover;
   }
 
@@ -168,6 +199,75 @@ export default {
       width: calc(100% - 600px);
       height: 400px;
     }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .contact-us--page {
+    .image-space {
+      margin-bottom: 0.36rem;
+      height: 2.5rem;
+    }
+
+    .contact-area {
+      .title {
+        font-size: 0.24rem;
+        line-height: 0.3rem;
+        text-align: left;
+      }
+
+      .e-title {
+        padding-top: 0.08rem;
+        font-size: 0.14rem;
+        text-align: left;
+      }
+    }
+
+    .map-part {
+      flex-wrap: wrap;
+      padding: 0.16rem 0.16rem 0.36rem;
+
+      .contact-ways {
+        padding: 0;
+        width: 100%;
+
+        p {
+          font-size: 0.12rem;
+          line-height: 0.28rem;
+        }
+
+        .desc {
+          margin-top: 0;
+          font-size: 0.14rem;
+          line-height: 0.28rem;
+        }
+
+        .pad-t {
+          padding-top: 0.16rem;
+          font-size: 0.12rem;
+          line-height: 0.28rem;
+        }
+      }
+
+      .address-map {
+        margin-top: 0.16rem;
+        width: 100%;
+        height: 3rem;
+
+        .rotate-circle {
+          padding: 0.1rem;
+        }
+      }
+    }
+  }
+}
+</style>
+
+<style lang="css">
+@media screen and (max-width: 1024px) {
+  .control,
+  .rotate-circle {
+    display: none;
   }
 }
 </style>
