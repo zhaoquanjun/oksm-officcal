@@ -15,6 +15,9 @@
       @mouseup.stop="_handleMouseup"
       @mouseleave="_handleMouseup"
       @mouseout="_handleMouseup"
+      @touchstart="_handleTouchstart"
+      @touchmove="_handleTouchmove"
+      @touchend="_handleTouchend"
     >
       <slot></slot>
     </div>
@@ -221,13 +224,13 @@ export default {
      * @name 鼠标位于轮播图上
      */
     _handleMouseOnSwiper() {
-      this.swiperOptions.autoplay && this._stop();
+      (this.equ == 'pc' && this.swiperOptions.autoplay) && this._stop();
     },
     /**
      * @name 鼠标离开轮播图
      */
     _handleMouseOutSwiper() {
-      this.swiperOptions.autoplay && this._start();
+      (this.equ == 'pc' && this.swiperOptions.autoplay) && this._start();
     },
     /**
      * @name 鼠标事件-mousedown
@@ -259,6 +262,38 @@ export default {
       this.disX < -250 && this._next(); // 左滑成功
       this.disX = 0;
     },
+    /**
+     * @name 手指事件-touchstart
+     */
+    _handleTouchstart(e) {
+      this._stop()
+      this.isMoving = true;
+      this.startX = e.changedTouches[0].pageX;
+      this.$refs.inner.style.transition = "none";
+    },
+    /**
+     * @name 手指事件-touchmove
+     */
+    _handleTouchmove(e) {
+      if (this.isMoving) {
+        const disX = e.changedTouches[0].pageX - this.startX;
+        this.disX += disX;
+        const newX = -this.swiperW * this.activeIndex + this.disX;
+        this.$refs.inner.style.transform = "translate3d(" + newX + "px, 0, 0)";
+        this.startX = e.changedTouches[0].pageX;
+      }
+    },
+    _handleTouchend() {
+      this.isMoving = false;
+      this.$refs.inner.style.transition = "all 0.35s ease-in-out"; // 拖动取消动画，避免有延迟状影响小哦过
+      this.disX > 50 && this._prev(); // 右滑成功
+      this.disX < -50 && this._next(); // 左滑成功
+      this.disX = 0;
+      this._start()
+    },
+    /**
+     * @name 手指事件-touchend
+     */
     /**
      * @name slot--重置active-pagination-item
      * @params {index} 索引

@@ -34,6 +34,9 @@
         >
           {{ item }}；
         </p>
+        <p class="tit">联系方式：</p>
+        <p class="text">电话：13373133883</p>
+        <p class="text">邮箱：113128998@qq.com</p>
       </div>
     </div>
   </div>
@@ -172,7 +175,7 @@ export default {
         }
 
         .desc {
-          margin-bottom: 0.2rem;
+          margin-bottom: .2rem;
           font-size: 0.14rem;
           line-height: 0.21rem;
         }
@@ -182,7 +185,9 @@ export default {
           flex-wrap: wrap;
 
           .item {
-            padding: 0.04rem 0.08rem;
+            margin-right: .08rem;
+            margin-bottom: .08rem;
+            padding: 0.03rem 0.07rem;
             height: auto;
             font-size: 0.12rem;
             line-height: 0.17rem;
@@ -205,6 +210,11 @@ export default {
         .tit, .text {
           font-size: .14rem;
           line-height: .36rem;
+        }
+
+        .text {
+          padding-bottom: .1rem;
+          line-height: .24rem;
         }
       }
     }

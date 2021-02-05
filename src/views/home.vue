@@ -373,7 +373,6 @@ export default {
       .btn {
         margin-top: 32px;
         padding: 8px 12px;
-        width: 100%;
         text-align: center;
       }
     }
@@ -755,6 +754,7 @@ export default {
 
         .btn {
           margin-top: 0.2rem;
+          width: 100%;
           font-size: .12rem;
           border-radius: .02rem;
         }

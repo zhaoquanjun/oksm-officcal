@@ -1,14 +1,14 @@
 <template>
-  <div class="oksm-header--section" :class="{ bg: hasScrollOverCarousel }">
+  <div class="oksm-header--section" :class="{ bg: hasScrollOverCarousel || activeNav }">
     <div class="header-wrapper content-area">
       <div class="logo">
-        <img :src="logo" alt="" v-show="!hasScrollOverCarousel">
-        <img :src="activeLogo" alt="" v-show="hasScrollOverCarousel">
+        <img :src="logo" alt="" v-show="!hasScrollOverCarousel && !activeNav">
+        <img :src="activeLogo" alt="" v-show="hasScrollOverCarousel || activeNav">
       </div>
       <div class="nav-icon" :class="activeNav ? 'active-icon' : ''" v-if="equ == 'mobile'" @click="_handleChangeNavvStatus">
         <i class="iconfont icon-shousuo"></i>  
       </div> 
-      <ul class="nav-wrapper" :class="activeNav ? 'active-nav' : ''">
+      <ul class="nav-wrapper" :class="activeNav ? 'active-nav' : ''" @click.self="_handleClickWrapper">
         <li
           class="nav-item"
           :class="{ active: currentChildPath == item.path || currentPath == item.path }"
@@ -64,6 +64,9 @@ export default {
     }
   },
   methods: {
+    /**
+     * @name 路由跳转
+     */
     _handleSkipOtherPage(item) {
       if (this.$route.path == item.path) return;
       this.$router.push({
@@ -71,6 +74,9 @@ export default {
       });
       if (this.equ == 'mobile') this.activeNav = false
     },
+    /**
+     * @name 添加全局滚动事件
+     */
     addDocumentEvent() {
       document.addEventListener("scroll", (e) => {
         // 有文档声明类型的用 document.body.scrollTop； 没有文档类型声明的用 document.documentElement.scrollTop
@@ -79,8 +85,17 @@ export default {
         this.hasScrollOverCarousel = scrollTop > 0 ? true : false;
       });
     },
+    /**
+     * @name 移动端切换导航状态
+     */
     _handleChangeNavvStatus() {
       this.activeNav = !this.activeNav
+    },
+    /**
+     * @name 移动端点击导航容器事件
+     */
+    _handleClickWrapper() {
+      this.activeNav = false
     }
   },
 };
@@ -98,6 +113,7 @@ export default {
   align-items: center;
   z-index: 99;
   background-color: transparent;
+  transition: all .2s ease-in-out;
 
   .header-wrapper {
     display: flex;
@@ -173,19 +189,25 @@ export default {
 
     .header-wrapper {
       width: 100%;
+
+      .logo {
+        width: 120px
+      }
+
       .nav-wrapper {
         position: fixed;
-        top: 0;
+        top: .6rem;
         right: 0;
-        transform: translate(200%, -100%);
+        transform: translate(200%, -200%);
         display: block;
-        padding: .6rem .16rem .2rem;
+        padding: .24rem .16rem .2rem;
         width: 100%;
-        height: 100%;
+        height: calc(100% - .6rem);
         transition: all .2s ease-in-out;
         opacity: 0;
         z-index: 11;
         background: #fff;
+        border-top: .01rem solid #f5f5f5;
         box-shadow: 0 .08rem .16rem 0 rgba(223, 223, 223, 0.24);
 
         .nav-item {
@@ -213,7 +235,6 @@ export default {
 
       .nav-icon {
         position: relative;
-        z-index: 21;
         i.iconfont {
           display: block;
           color: #fff;
