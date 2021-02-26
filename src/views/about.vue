@@ -38,14 +38,14 @@
       <div class="image-list">
         <div class="t-image">
           <div class="l-t--image ani-flashCircle">
-            <img :src="storeList[0].src" :alt="storeList[0].title" />
+            <img :src="storeList[0].src" :alt="storeList[0].title" preview="storeList" />
           </div>
           <ul class="r-t--image">
             <li class="ani-flashCircle">
-              <img :src="storeList[1].src" :alt="storeList[1].title" />
+              <img :src="storeList[1].src" :alt="storeList[1].title" preview="storeList" />
             </li>
             <li class="ani-flashCircle">
-              <img :src="storeList[2].src" :alt="storeList[2].title" />
+              <img :src="storeList[2].src" :alt="storeList[2].title" preview="storeList" />
             </li>
           </ul>
         </div>
@@ -55,7 +55,7 @@
             :key="index"
             class="ani-flashCircle"
           >
-            <img :src="item.src" :alt="item.title" />
+            <img :src="item.src" :alt="item.title" preview="storeList" />
           </li>
         </ul>
       </div>

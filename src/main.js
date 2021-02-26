@@ -12,6 +12,12 @@ const equ = utils.getCurrentEquType()
 localStorage.setItem('equ', equ)
 if (equ == 'mobile') rem()
 
+// image preview start 点击预览 双击放大  -- github: https://826327700.github.io/vue-photo-preview/
+import preview from 'vue-photo-preview'
+import 'vue-photo-preview/dist/skin.css'
+Vue.use(preview)
+// image preview end
+
 new Vue({
   router,
   render: (h) => h(App),
